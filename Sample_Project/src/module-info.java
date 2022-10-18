@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author julieayoubi
- *
- */
-module Sample {
-}
