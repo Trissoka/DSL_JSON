@@ -1,0 +1,4 @@
+include 'org.xtext.dsl_json'
+include 'org.xtext.dsl_json.ide'
+include 'org.xtext.dsl_json.web'
+include 'org.xtext.dsl_json.tests'

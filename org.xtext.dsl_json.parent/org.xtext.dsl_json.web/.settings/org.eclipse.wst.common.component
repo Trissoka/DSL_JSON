@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+	<wb-module deploy-name="org.xtext.dsl_json.web">
+		<property name="context-root" value="org.xtext.dsl_json.web"/>
+		<wb-resource deploy-path="/WEB-INF/classes" source-path="src"/>
+		<wb-resource deploy-path="/WEB-INF/classes" source-path="src-gen"/>
+		<wb-resource deploy-path="/WEB-INF/classes" source-path="xtend-gen"/>
+		<dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/org.xtext.dsl_json.ide/org.xtext.dsl_json.ide">
+			<dependency-type>uses</dependency-type>
+		</dependent-module>
+		<dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/org.xtext.dsl_json/org.xtext.dsl_json">
+			<dependency-type>uses</dependency-type>
+		</dependent-module>
+	</wb-module>
+</project-modules>

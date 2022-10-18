@@ -1,0 +1,9 @@
+grammar org.xtext.Dsl_json with org.eclipse.xtext.common.Terminals
+
+generate dsl_json "http://www.xtext.org/Dsl_json"
+
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';
