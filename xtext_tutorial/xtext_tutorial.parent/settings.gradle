@@ -1,0 +1,4 @@
+include 'xtext_tutorial'
+include 'xtext_tutorial.ide'
+include 'xtext_tutorial.web'
+include 'xtext_tutorial.tests'

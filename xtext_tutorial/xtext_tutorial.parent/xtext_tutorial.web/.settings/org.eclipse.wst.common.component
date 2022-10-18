@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+	<wb-module deploy-name="xtext_tutorial.web">
+		<property name="context-root" value="xtext_tutorial.web"/>
+		<wb-resource deploy-path="/WEB-INF/classes" source-path="src"/>
+		<wb-resource deploy-path="/WEB-INF/classes" source-path="src-gen"/>
+		<wb-resource deploy-path="/WEB-INF/classes" source-path="xtend-gen"/>
+		<wb-resource deploy-path="/" source-path="WebRoot"/>
+		<dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/xtext_tutorial.ide/xtext_tutorial.ide">
+			<dependency-type>uses</dependency-type>
+		</dependent-module>
+		<dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/xtext_tutorial/xtext_tutorial">
+			<dependency-type>uses</dependency-type>
+		</dependent-module>
+	</wb-module>
+</project-modules>

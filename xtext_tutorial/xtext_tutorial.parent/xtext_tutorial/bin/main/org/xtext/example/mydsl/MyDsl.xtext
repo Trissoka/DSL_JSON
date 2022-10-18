@@ -1,0 +1,27 @@
+grammar org.xtext.example.mydsl.MyDsl with org.eclipse.xtext.common.Terminals
+
+generate myDsl "http://www.xtext.org/example/mydsl/MyDsl"
+
+Mydsl:
+	(elements+=Type); // Arbitrary number of Type which are added to a feature called elements
+Type:
+	DataType | Entity; // Rule Type delegates to either rule DataType or Entity
+DataType:
+	'datatype' name=ID; // Rule starts with keyword 'datatype' followed by an identifier which is parsed by a rule called 'ID'
+Entity:
+	'entity' name=ID ('extends'superType=[Entity])? '{' // Same as DataType then the extends clause which is parenthesized and optional (?)
+		(feature+=Feature)*
+	'}';
+	/*
+	 * Since the feature named superType is a cross reference (note the square brackets), 
+	 * the parser rule Entity is not called here, but only a single identifier (the ID-rule) is parsed.
+	 * The actual Entity to assign to the superType reference is resolved during the linking phase. Finally 
+	 * between curly braces there can be any number of Features, which invokes the next rule.
+	 */
+Feature:
+	(many?='many')? name=ID ':' type=[Type];
+	/*
+	 * The keyword many shall be used to model a multi-valued feature in this DSL. 
+	 * The assignment operator (?=) implies that the feature many is of type boolean. 
+	 * You are already familiar with the other syntax elements in this parser rule.
+	 */
