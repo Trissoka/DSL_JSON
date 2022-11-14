@@ -1,0 +1,41 @@
+grammar org.xtext.example.mydsl.MyDsl with org.eclipse.xtext.common.Terminals
+
+generate myDsl "http://www.xtext.org/example/mydsl/MyDsl"
+
+
+Model:
+	sentences+=Fun*;
+	
+
+Fun:
+	CountJson
+	| ReadJson
+	| WriteJson
+	| WriteCSV
+	| Remove
+	| Add
+	| Get
+	| Sort
+;
+
+CountJson : countJSON = "count" "("file=JSON")" ;
+
+ReadJson : readJSON = "read" "("path=STRING")";
+
+WriteJson : writeJSON = "writeJSON" "(" path=STRING "," file=JSON ")";
+
+WriteCSV: writeCVS = "writeCSV" "(" path=STRING "," file=JSON ")";
+
+Remove : removeElement = "remove" "(" id=INT "," file=JSON ")";
+
+Add : addElement = "add" "(" file=JSON "," id=INT ")";
+
+Get : getElement = "get" "("file=JSON "," ;
+
+Sort: sort = "sort" file=JSON "by" attribute=STRING ;
+
+
+JSON:
+	"{" (attribute+=ID ";")+ "}"
+	|"{" (attribute+=STRING "=" (valueSTR+=STRING | valueINT+=INT | valueID+=ID) ";")+ "}"
+;
