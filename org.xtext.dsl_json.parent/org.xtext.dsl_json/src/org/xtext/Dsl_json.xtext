@@ -4,25 +4,25 @@ generate dsl_json "http://www.xtext.org/Dsl_json"
 
 
 Model:
-	sentences+=Sentence*;
+	sentences+=Fun*;
 	
 	
-Sentence:
+/*Sentence:
 	'JSON' funcs=Fun (path=STRING)?
 	| 'Hello' name=ID '!'
-;
+;*/
 
 Fun:
-	countJSON = "count" attribute=STRING 
-	| writeJSON = "write" (name=ID | path=STRING) (options+=Options)* "in"
-	| removeElement="remove" id=INT name=ID
-	| addElement="add" json=JSON name=ID
-	| sort="sort" name=ID "by" attribute=STRING
+	countJSON = "count" "("file=JSON")" 
+	| readJSON = "read" "("path=STRING")"
+	| writeJSON = "writeJSON" "(" path=STRING "," file=JSON ")"
+	| writeCVS = "writeCSV" "(" path=STRING "," file=JSON ")"
+	| removeElement = "remove" "(" id=INT "," file=JSON ")"
+	| addElement = "add" "(" file=JSON "," id=INT ")"
+	| getElement = "get" "("file=JSON "," 
+	| sort = "sort" file=JSON "by" attribute=STRING 
 ;
 
-Options:
-	"in" "CSV"
-;
 
 JSON:
 	"{" (attribute+=ID ";")+ "}"

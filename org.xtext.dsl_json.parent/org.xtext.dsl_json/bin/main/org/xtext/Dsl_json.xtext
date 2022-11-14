@@ -2,8 +2,29 @@ grammar org.xtext.Dsl_json with org.eclipse.xtext.common.Terminals
 
 generate dsl_json "http://www.xtext.org/Dsl_json"
 
+
 Model:
-	greetings+=Greeting*;
+	sentences+=Fun*;
 	
-Greeting:
-	'Hello' name=ID '!';
+	
+/*Sentence:
+	'JSON' funcs=Fun (path=STRING)?
+	| 'Hello' name=ID '!'
+;*/
+
+Fun:
+	countJSON = "count" "("file=JSON")" 
+	| readJSON = "read" "("path=STRING")"
+	| writeJSON = "writeJSON" "(" path=STRING "," file=JSON ")"
+	| writeCVS = "writeCSV" "(" path=STRING "," file=JSON ")"
+	| removeElement = "remove" "(" id=INT "," file=JSON ")"
+	| addElement = "add" "(" file=JSON "," id=INT ")"
+	| getElement = "get" "("file=JSON "," 
+	| sort = "sort" file=JSON "by" attribute=STRING 
+;
+
+
+JSON:
+	"{" (attribute+=ID ";")+ "}"
+	|"{" (attribute+=STRING "=" (valueSTR+=STRING | valueINT+=INT | valueID+=ID) ";")+ "}"
+;
