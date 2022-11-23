@@ -47,7 +47,7 @@ Sort returns Variable: sort = "sort" file=Variable "by" attribute=Variable ;
 
 
 JSON:
-	|"{" (attribute+=STRING "=" (value+=STRING | value+=INT | value+=ID) ";")+ "}"
+	"{" (attribute+=STRING "=" (value+=STRING | value+=INT | value+=ID) ";")+ "}"
 	|"{" (attribute+=STRING ":" "{" (value+=JSON)+ "}" ";" )+ "}"  
 	|"{" (attribute+=STRING ":" "[" "{" (value+=JSON)+ "}" "]" ";" )+ "}" 
 	
