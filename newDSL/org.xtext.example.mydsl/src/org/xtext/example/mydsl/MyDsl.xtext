@@ -6,10 +6,19 @@ generate myDsl "http://www.xtext.org/example/mydsl/MyDsl"
 Model:
 	sentences+=Fun*;
 	
-
+Variable:
+	declaration=VariableDeclaration '=' data=TypeReference;
+	
+VariableDeclaration:
+	name=ID ':' type=TypeReference;
+	
+TypeReference:
+	primitive=(INT|STRING|JSON);
+	
 Fun:
 	CountJson
 	| ReadJson
+	| PrintJson
 	| WriteJson
 	| WriteCSV
 	| Remove
@@ -18,24 +27,30 @@ Fun:
 	| Sort
 ;
 
-CountJson : countJSON = "count" "("file=JSON")" ;
+CountJson returns INT: countJSON = "count" "("file=Variable")" ;
 
-ReadJson : readJSON = "read" "("path=STRING")";
+ReadJson returns Variable : readJSON = "read" "("path=Variable")";
 
-WriteJson : writeJSON = "writeJSON" "(" path=STRING "," file=JSON ")";
+PrintJson : printJson = "print" "("file=Variable")";
 
-WriteCSV: writeCVS = "writeCSV" "(" path=STRING "," file=JSON ")";
+WriteJson : writeJSON = "writeJSON" "(" path=Variable "," file=Variable ")";
 
-Remove : removeElement = "remove" "(" id=INT "," file=JSON ")";
+WriteCSV: writeCVS = "writeCSV" "(" path=Variable "," file=Variable ")";
 
-Add : addElement = "add" "(" file=JSON "," id=INT ")";
+Remove : removeElement = "remove" "(" id=Variable "," file=Variable ")";
 
-Get : getElement = "get" "("file=JSON "," ;
+Add : addElement = "add" "(" file=Variable "," id=Variable ")";
 
-Sort: sort = "sort" file=JSON "by" attribute=STRING ;
+Get returns Variable: getElement = "get" "("file=Variable "," id=Variable ")";
+
+Sort returns Variable: sort = "sort" file=Variable "by" attribute=Variable ;
 
 
 JSON:
-	"{" (attribute+=ID ";")+ "}"
-	|"{" (attribute+=STRING "=" (valueSTR+=STRING | valueINT+=INT | valueID+=ID) ";")+ "}"
+	|"{" (attribute+=STRING "=" (value+=STRING | value+=INT | value+=ID) ";")+ "}"
+	|"{" (attribute+=STRING ":" "{" (value+=JSON)+ "}" ";" )+ "}"  
+	|"{" (attribute+=STRING ":" "[" "{" (value+=JSON)+ "}" "]" ";" )+ "}" 
+	
 ;
+
+
