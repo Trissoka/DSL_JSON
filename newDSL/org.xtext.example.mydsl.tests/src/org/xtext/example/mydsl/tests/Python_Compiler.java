@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.xtext.example.mydsl.myDsl.Fun;
+import org.xtext.example.mydsl.myDsl.Get;
 import org.xtext.example.mydsl.myDsl.Model;
 import org.xtext.example.mydsl.myDsl.ReadJson;
 import org.xtext.example.mydsl.myDsl.Remove;
@@ -27,7 +28,7 @@ public class Python_Compiler {
 	Python_Compiler(Model model){
 		_model = model;
 	}
-	public void compileAndRun() throws IOException {
+	public String compileAndRun() throws IOException {
 		
 		//Code generation
 		EList<Fun> sentences = _model.getSentences();
@@ -85,21 +86,28 @@ public class Python_Compiler {
 				
 				String RegisterFileName= w.getPath();
 				JSON data= w.getFile();
-				EList<String> atts= data.getAttribute();
-				EList<String> vals= data.getValue();
-				int lenght=atts.size();
-				
-				//pythonCode+="df2 = pd.read_json(jsonStr, orient ='index')";
-				
-				String JSONSTR= "{ ";
-				for(int i=0;i<lenght;i++) {
-					JSONSTR+=atts.get(i)+" : "+vals.get(i)+" , ";
+				if(data!=null) {
+					EList<String> atts= data.getAttribute();
+					EList<String> vals= data.getValue();
+					int lenght=atts.size();
 					
+					//pythonCode+="df2 = pd.read_json(jsonStr, orient ='index')";
+					
+					String JSONSTR= "{ ";
+					for(int i=0;i<lenght;i++) {
+						JSONSTR+=atts.get(i)+" : "+vals.get(i)+" , ";
+						
+					}
+					JSONSTR+=" } ";
+					
+					pythonCode+="df = pd.read_json("+JSONSTR+", orient ='index') \n";
+					pythonCode+="df.to_csv("+RegisterFileName+",index=False) \n";
+					
+				}else {
+					pythonCode+="df.to_csv("+VarName.get(VarName.size()-1)+",index=False) \n";
 				}
-				JSONSTR+=" } ";
 				
-				pythonCode+="df = pd.read_json("+JSONSTR+", orient ='index') \n";
-				pythonCode+="df.to_csv("+RegisterFileName+",index=False) \n";
+		
 			}
 			
 			
@@ -166,7 +174,12 @@ public class Python_Compiler {
 			if (s instanceof Show) {
 				Show sh= (Show) s;
 				String name = sh.getName();
-				pythonCode+= "display("+name+".to_string()) \\n";
+				if(name!=null) {
+					pythonCode+= "display("+name+".to_string()) \\n";
+				}else {
+					pythonCode+= "display("+VarName.get(VarName.size()-1)+".to_string()) \\n";
+				}
+
 			}
 			
 			// Obtient la valeur par ID du dernier JSON ouvert
@@ -242,6 +255,7 @@ public class Python_Compiler {
 	        System.out.println(err);
 	    }
 		
+		return o;
 		
 	}
 

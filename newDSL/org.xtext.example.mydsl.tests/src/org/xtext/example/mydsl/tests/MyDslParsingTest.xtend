@@ -30,4 +30,124 @@ class MyDslParsingTest {
 		val Python_Compiler cmpPython = new Python_Compiler(result)
 		cmpPython.compileAndRun
 	}
+	
+	
+	@Test
+	def void TestPython1(){
+		val result = parseHelper.parse('''
+			WriteJSON( "./path_for_json.json",{Var1 = "foo",Var2 = 0)
+		''')
+		
+		//Test de sécurité pour result.
+		Assertions.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+		
+		//Run dans le compiler Python
+		val Python_Compiler cmpPython = new Python_Compiler(result)
+		cmpPython.compileAndRun
+		
+	}
+	
+	@Test
+	def void TestJQ1(){
+		val result = parseHelper.parse('''
+			WriteJSON( "./path_for_json.json",{Var1 = "foo",Var2 = 0})
+		''')
+		
+		//Test de sécurité pour result.
+		Assertions.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+		
+		
+		//Run dans le compiler JQ
+		val JQ_Compiler cmpJQ = new JQ_Compiler(result)
+		cmpJQ.compileAndRun
+		
+	}
+	
+	
+		@Test
+	def void TestPython2(){
+		val result = parseHelper.parse('''
+			WriteCSV( "./path_for_json.csv",{Var1 = "foo",Var2 = 0)
+		''')
+		
+		//Test de sécurité pour result.
+		Assertions.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+		
+		//Run dans le compiler Python
+		val Python_Compiler cmpPython = new Python_Compiler(result)
+		cmpPython.compileAndRun
+		
+	}
+	
+	@Test
+	def void TestJQ2(){
+		val result = parseHelper.parse('''
+			WriteCSV( "./path_for_json.csv",{Var1 = "foo",Var2 = 0})
+		''')
+		//Test de sécurité pour result.
+		Assertions.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+		
+		
+		//Run dans le compiler JQ
+		val JQ_Compiler cmpJQ = new JQ_Compiler(result)
+		cmpJQ.compileAndRun
+		
+	}
+	
+	
+	@Test
+	def void Test_All_1(){
+		val result = parseHelper.parse('''
+			ReadJson("./path_to_json.json")
+			Show()
+		''')
+		
+		//Test de sécurité pour result.
+		Assertions.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+		
+		
+		//Run dans le compiler JQ
+		val JQ_Compiler cmpJQ = new JQ_Compiler(result)
+		val o_JQ = cmpJQ.compileAndRun
+		
+		val Python_Compiler cmpPython = new Python_Compiler(result)
+		val o_PY = cmpPython.compileAndRun
+		
+		Assertions.assertEquals(o_JQ,o_PY)
+		
+	}
+	
+		@Test
+	def void Test_All_2(){
+		val result = parseHelper.parse('''
+			ReadJSON("./path_to_json.json")
+			Show()
+		''')
+		
+		//Test de sécurité pour result.
+		Assertions.assertNotNull(result)
+		val errors = result.eResource.errors
+		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+		
+		
+		//Run dans le compiler JQ
+		val JQ_Compiler cmpJQ = new JQ_Compiler(result)
+		val o_JQ = cmpJQ.compileAndRun
+		
+		val Python_Compiler cmpPython = new Python_Compiler(result)
+		val o_PY = cmpPython.compileAndRun
+		
+		Assertions.assertNotEquals(o_JQ,o_PY)
+		
+	}
 }
