@@ -16,9 +16,13 @@ import org.xtext.example.mydsl.myDsl.ReadJson;
 import org.xtext.example.mydsl.myDsl.Remove;
 import org.xtext.example.mydsl.myDsl.WriteCSV;
 import org.xtext.example.mydsl.myDsl.WriteJson;
-import org.xtext.example.mydsl.myDsl.JSON;
+import org.xtext.example.mydsl.myDsl.TypeJSON;
+import org.xtext.example.mydsl.myDsl.TypeReference;
+import org.xtext.example.mydsl.myDsl.TypeString;
 import org.xtext.example.mydsl.myDsl.Add;
 import org.xtext.example.mydsl.myDsl.Sort;
+import org.xtext.example.mydsl.myDsl.TypeInt;
+import org.xtext.example.mydsl.myDsl.Show;
 
 import com.google.common.io.Files;
 
@@ -67,13 +71,26 @@ public class Python_Compiler {
 				
 				String RegisterFileName = r.getPath();
 				
-				JSON data = r.getFile();
+				TypeJSON data = r.getValue();
 				EList<String> atts= data.getAttribute();
-				EList<String> vals= data.getValue();
+				EList<TypeReference> vals= data.getValue();
+				List<String> v = new ArrayList<String>();
+				for(TypeReference tr : vals) {
+					if (tr instanceof TypeString) {
+						TypeString ts = (TypeString) tr;
+						String se = ts.getVal();
+						v.add(se);
+					}
+					else if (tr instanceof TypeInt) {
+						TypeInt ts = (TypeInt) tr;
+						String re = "" + ts.getVal();
+						v.add(re);
+					}
+				}
 				int lenght=atts.size();
 				pythonCode+="json.dump( {";
 				for(int i=0;i<lenght;i++) {
-					pythonCode+=atts.get(i)+" : "+vals.get(i)+" , ";
+					pythonCode+=atts.get(i)+" : "+v.get(i)+" , ";
 					
 				}
 				pythonCode+=" }, "+RegisterFileName+" )\n";
@@ -85,17 +102,30 @@ public class Python_Compiler {
 				WriteCSV w=(WriteCSV) s;
 				
 				String RegisterFileName= w.getPath();
-				JSON data= w.getFile();
+				TypeJSON data = w.getValue();
 				if(data!=null) {
 					EList<String> atts= data.getAttribute();
-					EList<String> vals= data.getValue();
+					EList<TypeReference> vals= data.getValue();
+					List<String> v = new ArrayList<String>();
+					for(TypeReference tr : vals) {
+						if (tr instanceof TypeString) {
+							TypeString ts = (TypeString) tr;
+							String se = ts.getVal();
+							v.add(se);
+						}
+						else if (tr instanceof TypeInt) {
+							TypeInt ts = (TypeInt) tr;
+							String re = "" + ts.getVal();
+							v.add(re);
+						}
+					}
 					int lenght=atts.size();
 					
 					//pythonCode+="df2 = pd.read_json(jsonStr, orient ='index')";
 					
 					String JSONSTR= "{ ";
 					for(int i=0;i<lenght;i++) {
-						JSONSTR+=atts.get(i)+" : "+vals.get(i)+" , ";
+						JSONSTR+=atts.get(i)+" : "+v.get(i)+" , ";
 						
 					}
 					JSONSTR+=" } ";
@@ -117,15 +147,28 @@ public class Python_Compiler {
 				Remove r = (Remove) s;
 				int id= r.getId();
 				
-				JSON data=r.getFile();
+				TypeJSON data = r.getValue();
 				
 				EList<String> atts = data.getAttribute();
-				EList<String> vals = data.getValue();
+				EList<TypeReference> vals = data.getValue();
+				List<String> v = new ArrayList<String>();
+				for(TypeReference tr : vals) {
+					if (tr instanceof TypeString) {
+						TypeString ts = (TypeString) tr;
+						String se = ts.getVal();
+						v.add(se);
+					}
+					else if (tr instanceof TypeInt) {
+						TypeInt ts = (TypeInt) tr;
+						String re = "" + ts.getVal();
+						v.add(re);
+					}
+				}
 				int lenght=atts.size();
 				String JSONSTR = "{";
 				for(int i=0;i<lenght;i++) {
 					if(i!=id) {
-						JSONSTR+=atts.get(i)+":"+vals.get(i)+",";
+						JSONSTR+=atts.get(i)+":"+v.get(i)+",";
 					}	
 				}
 				JSONSTR+="}";
@@ -149,16 +192,27 @@ public class Python_Compiler {
 				String Name= VarName.get(VarName.size()-1);
 				
 				//JSON a ajouter
-				JSON data = a.getData();
+				TypeJSON data = a.getValue();
 				if(data!=null) {
 					EList<String> atts = data.getAttribute();
-					EList<String> vals = data.getValue();
+					EList<TypeReference> vals = data.getValue();
+					List<String> v = new ArrayList<String>();
+					for(TypeReference tr : vals) {
+						if (tr instanceof TypeString) {
+							TypeString ts = (TypeString) tr;
+							String se = ts.getVal();
+							v.add(se);
+						}
+						else if (tr instanceof TypeInt) {
+							TypeInt ts = (TypeInt) tr;
+							String re = "" + ts.getVal();
+							v.add(re);
+						}
+					}
 					int lenght=atts.size();
 					String JSONSTR = "{";
 					for(int i=0;i<lenght;i++) {
-						if(i!=id) {
-							JSONSTR+=atts.get(i)+":"+vals.get(i)+",";
-						}	
+						JSONSTR+=atts.get(i)+":"+v.get(i)+",";
 					}
 					JSONSTR+="}";
 					
@@ -184,7 +238,7 @@ public class Python_Compiler {
 			
 			// Obtient la valeur par ID du dernier JSON ouvert
 			if (s instanceof Get) {
-				Get g= (Get) g;
+				Get g= (Get) s;
 				
 				//JSON auquel on ajoute
 				//JSON data = a.getFile();

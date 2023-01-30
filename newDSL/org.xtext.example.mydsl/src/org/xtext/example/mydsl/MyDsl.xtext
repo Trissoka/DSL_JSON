@@ -1,56 +1,51 @@
 grammar org.xtext.example.mydsl.MyDsl with org.eclipse.xtext.common.Terminals
 
-generate myDsl "http://www.xtext.org/example/mydsl/MyDsl"
-
+generate myDsl "http://www.xtext.org/example/mydsl/MyDsl" 
 
 Model:
-	sentences+=Fun*;
-	
-Variable:
-	declaration=VariableDeclaration '=' data=TypeReference;
-	
-VariableDeclaration:
-	name=ID ':' type=TypeReference;
-	
-TypeReference:
-	primitive=(INT|STRING|JSON);
-	
+    sentences+=Fun*;
+    
 Fun:
-	CountJson
-	| ReadJson
-	| PrintJson
-	| WriteJson
-	| WriteCSV
-	| Remove
-	| Add
-	| Get
-	| Sort
+    CountJson
+    | ReadJson
+    | PrintJson
+    | WriteJson
+    | WriteCSV
+    | Remove
+    | Add
+    | Get
+    | Sort
+    | Show
 ;
 
-CountJson returns INT: countJSON = "count" "("file=Variable")" ;
 
-ReadJson returns Variable : readJSON = "read" "("path=Variable")";
+CountJson: countJSON = "count" "("value=TypeString")" ;
 
-PrintJson : printJson = "print" "("file=Variable")";
+ReadJson : readJSON = "read" "("path=STRING")";
 
-WriteJson : writeJSON = "writeJSON" "(" path=Variable "," file=Variable ")";
+PrintJson : printJson = "print" "("value=STRING")";
 
-WriteCSV: writeCVS = "writeCSV" "(" path=Variable "," file=Variable ")";
+WriteJson : writeJSON = "writeJSON" "(" path=STRING ("," value=TypeJSON)? ")";
 
-Remove : removeElement = "remove" "(" id=Variable "," file=Variable ")";
+WriteCSV: writeCVS = "writeCSV" "(" path=STRING ("," value=TypeJSON)? ")";
 
-Add : addElement = "add" "(" file=Variable "," id=Variable ")";
+Remove : removeElement = "remove" "(" value=TypeJSON "," id=INT ")";
 
-Get returns Variable: getElement = "get" "("file=Variable "," id=Variable ")";
+Add : addElement = "add" "(" value=TypeJSON ")";
 
-Sort returns Variable: sort = "sort" file=Variable "by" attribute=Variable ;
+Get: getElement = "get" "("id=INT ")";
+
+Sort: sort = "sort" value=STRING "by" attribute=STRING ;
+
+Show: show = "show" ("(" name=STRING ")")?;
 
 
-JSON:
-	"{" (attribute+=STRING "=" (value+=STRING | value+=INT | value+=ID) ";")+ "}"
-	|"{" (attribute+=STRING ":" "{" (value+=JSON)+ "}" ";" )+ "}"  
-	|"{" (attribute+=STRING ":" "[" "{" (value+=JSON)+ "}" "]" ";" )+ "}" 
-	
-;
+TypeReference : TypeInt|TypeString|TypeJSON;
+TypeInt : val=INT;
+TypeString : val=STRING;
+
+TypeJSON : "{" (attribute+=STRING "=" (value+=TypeReference) ";")+ "}"
+	|"{" (attribute+=STRING ":" "{" (value+=TypeReference)+ "}" ";" )+ "}" |
+	"{" (attribute+=STRING ":" "[" "{" (value+=TypeReference)+ "}" "]" ";" )+ "}";
 
 
