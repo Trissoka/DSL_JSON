@@ -15,9 +15,13 @@ import org.xtext.example.mydsl.myDsl.ReadJson;
 import org.xtext.example.mydsl.myDsl.Remove;
 import org.xtext.example.mydsl.myDsl.WriteCSV;
 import org.xtext.example.mydsl.myDsl.WriteJson;
-import org.xtext.example.mydsl.myDsl.JSON;
+import org.xtext.example.mydsl.myDsl.TypeJSON;
+import org.xtext.example.mydsl.myDsl.TypeReference;
+import org.xtext.example.mydsl.myDsl.TypeString;
 import org.xtext.example.mydsl.myDsl.Add;
 import org.xtext.example.mydsl.myDsl.Sort;
+import org.xtext.example.mydsl.myDsl.TypeInt;
+import org.xtext.example.mydsl.myDsl.Show;
 
 import com.google.common.io.Files;
 
@@ -37,7 +41,6 @@ public class JQ_Compiler {
 		List<String> VarName= new ArrayList<String>();
 	
 		String JQCode="";
-		JQCode+=" #!/bin/bash \n";
 		
 		for(Fun s : sentences) {
 			
@@ -63,32 +66,58 @@ public class JQ_Compiler {
 				WriteJson w = (WriteJson) s;
 				
 				String RegisterFileName= w.getPath();
-				JSON data= w.getFile();
+				TypeJSON data = w.getValue();
 				EList<String> atts= data.getAttribute();
-				EList<String> vals= data.getValue();
+				EList<TypeReference> vals= data.getValue();
+				List<String> v = new ArrayList<String>();
+				for(TypeReference tr : vals) {
+					if (tr instanceof TypeString) {
+						TypeString ts = (TypeString) tr;
+						String se = ts.getVal();
+						v.add(se);
+					}
+					else if (tr instanceof TypeInt) {
+						TypeInt ts = (TypeInt) tr;
+						String re = "" + ts.getVal();
+						v.add(re);
+					}
+				}
 				int lenght=atts.size();
 				
 				
-				JQCode+="jq -n";
+				JQCode+="jq -n ";
 				for(int i=0;i<lenght;i++) {
-					JQCode+="--arg "+atts.get(i)+" \""+vals.get(i)+" "; 
+					JQCode+="--arg "+atts.get(i)+" \""+v.get(i)+"\" "; 
 					
 				}
-				JQCode+= ">"+RegisterFileName+ "\n";
+				JQCode+= " '$ARGS.named' >"+RegisterFileName+ "\n";
 			}
 			
 			if(s instanceof WriteCSV) {
 				WriteCSV w= (WriteCSV) s;
 				
 				String RegisterFileName= w.getPath();
-				JSON data= w.getFile();
+				TypeJSON data = w.getValue();
 				EList<String> atts= data.getAttribute();
-				EList<String> vals= data.getValue();
+				EList<TypeReference> vals= data.getValue();
+				List<String> v = new ArrayList<String>();
+				for(TypeReference tr : vals) {
+					if (tr instanceof TypeString) {
+						TypeString ts = (TypeString) tr;
+						String se = ts.getVal();
+						v.add(se);
+					}
+					else if (tr instanceof TypeInt) {
+						TypeInt ts = (TypeInt) tr;
+						String re = "" + ts.getVal();
+						v.add(re);
+					}
+				}
 				int lenght=atts.size();
 				
 				String JSONSTR= "{ ";
 				for(int i=0;i<lenght;i++) {
-					JSONSTR+=atts.get(i)+" : "+vals.get(i)+" , ";
+					JSONSTR+=atts.get(i)+" : "+v.get(i)+" , ";
 					
 				}
 				JSONSTR+=" } ";
@@ -110,7 +139,7 @@ public class JQ_Compiler {
 		Files.write(JQCode.getBytes(), new File(JQ_OUTPUT));
 		
 		
-		Process p = Runtime.getRuntime().exec("./ "+ JQ_OUTPUT);
+		Process p = Runtime.getRuntime().exec("bash "+ JQ_OUTPUT);
 		
 		// output
 		BufferedReader stdInput = new BufferedReader(new

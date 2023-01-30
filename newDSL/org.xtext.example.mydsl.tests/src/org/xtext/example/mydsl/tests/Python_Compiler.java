@@ -88,12 +88,13 @@ public class Python_Compiler {
 					}
 				}
 				int lenght=atts.size();
+				pythonCode+= "with open (\"" + RegisterFileName + "\",\"w\") as outfile: \n \t";
 				pythonCode+="json.dump( {";
 				for(int i=0;i<lenght;i++) {
-					pythonCode+=atts.get(i)+" : "+v.get(i)+" , ";
+					pythonCode+="\""+atts.get(i)+"\" : \""+v.get(i)+"\" , ";
 					
 				}
-				pythonCode+=" }, "+RegisterFileName+" )\n";
+				pythonCode+=" }, outfile )\n";
 				
 			}
 			
@@ -125,16 +126,18 @@ public class Python_Compiler {
 					
 					String JSONSTR= "{ ";
 					for(int i=0;i<lenght;i++) {
-						JSONSTR+=atts.get(i)+" : "+v.get(i)+" , ";
+						JSONSTR+="\""+atts.get(i)+"\" : \""+v.get(i)+"\" , ";
 						
 					}
 					JSONSTR+=" } ";
+					pythonCode += "data = '" + JSONSTR + "'\n";
+					pythonCode += "print(data) \n";
 					
-					pythonCode+="df = pd.read_json("+JSONSTR+", orient ='index') \n";
-					pythonCode+="df.to_csv("+RegisterFileName+",index=False) \n";
+					pythonCode+="df = pd.read_json(data, orient ='index') \n";
+					pythonCode+="df.to_csv(\""+RegisterFileName+"\",index=False) \n";
 					
 				}else {
-					pythonCode+="df.to_csv("+VarName.get(VarName.size()-1)+",index=False) \n";
+					pythonCode+="df.to_csv(\""+VarName.get(VarName.size()-1)+"\",index=False) \n";
 				}
 				
 		
@@ -288,7 +291,7 @@ public class Python_Compiler {
 		// execute the generated Python code
 		// roughly: exec "python foo.py"
 		
-		Process p = Runtime.getRuntime().exec("python "+ PYTHON_OUTPUT);
+		Process p = Runtime.getRuntime().exec("python3 "+ PYTHON_OUTPUT);
 		
 		// output
 		BufferedReader stdInput = new BufferedReader(new
