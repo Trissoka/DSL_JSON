@@ -35,7 +35,7 @@ class MyDslParsingTest {
 	@Test
 	def void TestPython1(){
 		val result = parseHelper.parse('''
-			WriteJSON( "./path_for_json.json",{Var1 = "foo",Var2 = 0)
+			writeJSON( "path_for_json.json",{"Var1" = "foo";})
 		''')
 		
 		//Test de sécurité pour result.
@@ -52,7 +52,7 @@ class MyDslParsingTest {
 	@Test
 	def void TestJQ1(){
 		val result = parseHelper.parse('''
-			WriteJSON( "./path_for_json.json",{Var1 = "foo",Var2 = 0})
+			writeJSON( "path_for_json.json",{"Var1" = "foo";})
 		''')
 		
 		//Test de sécurité pour result.
@@ -67,11 +67,11 @@ class MyDslParsingTest {
 		
 	}
 	
-	
+		//Test passé
 		@Test
 	def void TestPython2(){
 		val result = parseHelper.parse('''
-			WriteCSV( "./path_for_json.csv",{Var1 = "foo",Var2 = 0)
+			writeCSV( "path_for_json.csv",{"Var1" = "foo";"Var2" = 0;})
 		''')
 		
 		//Test de sécurité pour result.
@@ -88,7 +88,7 @@ class MyDslParsingTest {
 	@Test
 	def void TestJQ2(){
 		val result = parseHelper.parse('''
-			WriteCSV( "./path_for_json.csv",{Var1 = "foo",Var2 = 0})
+			WriteCSV( "./path_for_json.csv",{"Var1" = "foo","Var2" = 0})
 		''')
 		//Test de sécurité pour result.
 		Assertions.assertNotNull(result)
