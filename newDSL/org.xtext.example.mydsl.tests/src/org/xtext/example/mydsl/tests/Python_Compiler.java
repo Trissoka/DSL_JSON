@@ -32,6 +32,44 @@ public class Python_Compiler {
 	Python_Compiler(Model model){
 		_model = model;
 	}
+	
+	public String recurrenceRead(TypeJSON s)
+	{
+		EList<String> atts= s.getAttribute();
+		EList<TypeReference> vals= s.getValue();
+		List<String> v = new ArrayList<String>();
+		
+		String retour = "{";
+		
+		for(TypeReference tr : vals) {
+			if (tr instanceof TypeString) {
+				TypeString ts = (TypeString) tr;
+				String se = "\"" + ts.getVal() + "\"";
+				v.add(se);
+			}
+			else if (tr instanceof TypeInt) {
+				TypeInt ts = (TypeInt) tr;
+				String re = "" + ts.getVal();
+				v.add(re);
+			}
+			else if (tr instanceof TypeJSON) {
+				TypeJSON ts = (TypeJSON) tr;
+				String sj = recurrenceRead(ts);
+				v.add(sj);
+			}
+		}
+		
+		int lenght=atts.size();
+		
+		for(int i=0;i<lenght;i++) {
+			retour+="\""+atts.get(i)+"\" : "+v.get(i)+" , ";
+		}
+		
+		retour += "}";
+		
+		return retour;
+	}
+	
 	public String compileAndRun() throws IOException {
 		
 		//Code generation
@@ -39,7 +77,7 @@ public class Python_Compiler {
 		//String fileName = "";
 		String pythonCode="";
 		pythonCode+="import pandas as pd\n"
-				+ "import json \n";
+				+ "import json\n";
 		
 		// Vrai si un JSON a été lu
 		boolean HaveReadJSON=false;
@@ -61,7 +99,7 @@ public class Python_Compiler {
 				// r.get
 				String fileName = r.getPath();
 				VarName.add("df"+VarName.size());
-				pythonCode+=VarName.get(VarName.size()-1)+" = pd.read_json(\"" + fileName+ "\" )\n";
+				pythonCode+=VarName.get(VarName.size()-1)+" = pd.read_json(\"" + fileName+ "\", orient=\"index\")\n";
 				HaveReadJSON=true;
 			}
 			
@@ -72,30 +110,17 @@ public class Python_Compiler {
 				String RegisterFileName = r.getPath();
 				
 				TypeJSON data = r.getValue();
-				EList<String> atts= data.getAttribute();
-				EList<TypeReference> vals= data.getValue();
-				List<String> v = new ArrayList<String>();
-				for(TypeReference tr : vals) {
-					if (tr instanceof TypeString) {
-						TypeString ts = (TypeString) tr;
-						String se = ts.getVal();
-						v.add(se);
-					}
-					else if (tr instanceof TypeInt) {
-						TypeInt ts = (TypeInt) tr;
-						String re = "" + ts.getVal();
-						v.add(re);
-					}
+				if(data!=null) {
+					String retour = recurrenceRead(data);
+					pythonCode+= "with open (\"" + RegisterFileName + "\",\"w\") as outfile: \n \t";
+					pythonCode+="json.dump(" + retour + ", outfile )\n";
 				}
-				int lenght=atts.size();
-				pythonCode+= "with open (\"" + RegisterFileName + "\",\"w\") as outfile: \n \t";
-				pythonCode+="json.dump( {";
-				for(int i=0;i<lenght;i++) {
-					pythonCode+="\""+atts.get(i)+"\" : \""+v.get(i)+"\" , ";
-					
+				else
+				{
+					String Name= VarName.get(VarName.size()-1);
+					pythonCode+= Name + ".to_json(\""+RegisterFileName+"\",orient= 'index')\n";
+
 				}
-				pythonCode+=" }, outfile )\n";
-				
 			}
 			
 			//Ecriture d'un JSON en .csv
@@ -105,39 +130,17 @@ public class Python_Compiler {
 				String RegisterFileName= w.getPath();
 				TypeJSON data = w.getValue();
 				if(data!=null) {
-					EList<String> atts= data.getAttribute();
-					EList<TypeReference> vals= data.getValue();
-					List<String> v = new ArrayList<String>();
-					for(TypeReference tr : vals) {
-						if (tr instanceof TypeString) {
-							TypeString ts = (TypeString) tr;
-							String se = ts.getVal();
-							v.add(se);
-						}
-						else if (tr instanceof TypeInt) {
-							TypeInt ts = (TypeInt) tr;
-							String re = "" + ts.getVal();
-							v.add(re);
-						}
-					}
-					int lenght=atts.size();
-					
-					//pythonCode+="df2 = pd.read_json(jsonStr, orient ='index')";
-					
-					String JSONSTR= "{ ";
-					for(int i=0;i<lenght;i++) {
-						JSONSTR+="\""+atts.get(i)+"\" : \""+v.get(i)+"\" , ";
-						
-					}
-					JSONSTR+=" } ";
-					pythonCode += "data = '" + JSONSTR + "'\n";
+					String retour = recurrenceRead(data);
+
+					pythonCode += "data = '" + retour + "'\n";
 					pythonCode += "print(data) \n";
 					
 					pythonCode+="df = pd.read_json(data, orient ='index') \n";
 					pythonCode+="df.to_csv(\""+RegisterFileName+"\",index=False) \n";
 					
 				}else {
-					pythonCode+="df.to_csv(\""+VarName.get(VarName.size()-1)+"\",index=False) \n";
+					String Name= VarName.get(VarName.size()-1);
+					pythonCode+=Name+".to_csv(\""+RegisterFileName+"\",index=False) \n";
 				}
 				
 		
@@ -148,36 +151,11 @@ public class Python_Compiler {
 			
 			if(s instanceof Remove) {
 				Remove r = (Remove) s;
-				int id= r.getId();
+				String id= r.getId();
 				
-				TypeJSON data = r.getValue();
+				String Name= VarName.get(VarName.size()-1);
 				
-				EList<String> atts = data.getAttribute();
-				EList<TypeReference> vals = data.getValue();
-				List<String> v = new ArrayList<String>();
-				for(TypeReference tr : vals) {
-					if (tr instanceof TypeString) {
-						TypeString ts = (TypeString) tr;
-						String se = ts.getVal();
-						v.add(se);
-					}
-					else if (tr instanceof TypeInt) {
-						TypeInt ts = (TypeInt) tr;
-						String re = "" + ts.getVal();
-						v.add(re);
-					}
-				}
-				int lenght=atts.size();
-				String JSONSTR = "{";
-				for(int i=0;i<lenght;i++) {
-					if(i!=id) {
-						JSONSTR+=atts.get(i)+":"+v.get(i)+",";
-					}	
-				}
-				JSONSTR+="}";
-				if(UseLast) {
-					pythonCode+=VarName.get(VarName.size()-1)+" = pd.read_json("+JSONSTR+", orient ='index') \\n";
-				}
+				pythonCode+=Name+".drop([\""+id+"\"], axis=0, inplace=True)\n";
 				//pythonCode+="df = pd.read_json("+JSONSTR+", orient ='index') \n";
 				
 				
@@ -197,34 +175,12 @@ public class Python_Compiler {
 				//JSON a ajouter
 				TypeJSON data = a.getValue();
 				if(data!=null) {
-					EList<String> atts = data.getAttribute();
-					EList<TypeReference> vals = data.getValue();
-					List<String> v = new ArrayList<String>();
-					for(TypeReference tr : vals) {
-						if (tr instanceof TypeString) {
-							TypeString ts = (TypeString) tr;
-							String se = ts.getVal();
-							v.add(se);
-						}
-						else if (tr instanceof TypeInt) {
-							TypeInt ts = (TypeInt) tr;
-							String re = "" + ts.getVal();
-							v.add(re);
-						}
-					}
-					int lenght=atts.size();
-					String JSONSTR = "{";
-					for(int i=0;i<lenght;i++) {
-						JSONSTR+=atts.get(i)+":"+v.get(i)+",";
-					}
-					JSONSTR+="}";
+					String retour = recurrenceRead(data);
 					
-					pythonCode+="tmpDF = pd.read_json("+JSONSTR+", orient ='index') \\n";
-					
+					pythonCode+="tmpDF = pd.read_json('"+retour+"', orient ='index') \n";
 				}
 				
-				pythonCode += Name+".append(tmpDF) \\n";
-				
+				pythonCode += Name + "= pd.concat(["+Name+",tmpDF]) \n";
 			}
 			
 			//Montre le JSON choisi par son nom
@@ -232,9 +188,9 @@ public class Python_Compiler {
 				Show sh= (Show) s;
 				String name = sh.getName();
 				if(name!=null) {
-					pythonCode+= "display("+name+".to_string()) \\n";
+					pythonCode+= "print("+name+".to_string()) \\n";
 				}else {
-					pythonCode+= "display("+VarName.get(VarName.size()-1)+".to_string()) \\n";
+					pythonCode+= "print("+VarName.get(VarName.size()-1)+".to_string()) \n";
 				}
 
 			}
@@ -250,8 +206,8 @@ public class Python_Compiler {
 				//OU
 				// Si enregistrer dans les variables
 				String Name= VarName.get(VarName.size()-1);
-				int id= g.getId();
-				pythonCode+= Name+ "["+id + "]";
+				String id= g.getId();
+				pythonCode+= "print("+Name+ ".loc[\""+id+"\"])\n";
 				
 				
 			}

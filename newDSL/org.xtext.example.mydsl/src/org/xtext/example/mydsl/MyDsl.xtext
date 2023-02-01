@@ -29,11 +29,11 @@ WriteJson : writeJSON = "writeJSON" "(" path=STRING ("," value=TypeJSON)? ")";
 
 WriteCSV: writeCVS = "writeCSV" "(" path=STRING ("," value=TypeJSON)? ")";
 
-Remove : removeElement = "remove" "(" value=TypeJSON "," id=INT ")";
+Remove : removeElement = "remove" "(" id=STRING ")";
 
 Add : addElement = "add" "(" value=TypeJSON ")";
 
-Get: getElement = "get" "("id=INT ")";
+Get: getElement = "get" "("id=STRING ")";
 
 Sort: sort = "sort" value=STRING "by" attribute=STRING ;
 

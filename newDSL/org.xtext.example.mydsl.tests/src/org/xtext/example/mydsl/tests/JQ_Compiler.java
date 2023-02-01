@@ -32,6 +32,8 @@ public class JQ_Compiler {
 	JQ_Compiler(Model model){
 		_model = model;
 	}
+	
+	
 	public String compileAndRun() throws IOException {
 		
 		//Code generation
@@ -48,7 +50,7 @@ public class JQ_Compiler {
 				ReadJson r = (ReadJson) s;
 				
 				String FileName = r.getPath();
-				VarName.add("Var"+VarName.size()+1);
+				VarName.add(FileName);
 			}
 			
 			if( s instanceof Show) {
@@ -117,12 +119,13 @@ public class JQ_Compiler {
 				
 				String JSONSTR= "{ ";
 				for(int i=0;i<lenght;i++) {
-					JSONSTR+=atts.get(i)+" : "+v.get(i)+" , ";
+					JSONSTR+="\"" + atts.get(i)+"\" : \""+v.get(i)+"\" , ";
 					
 				}
 				JSONSTR+=" } ";
 				
-				JQCode+= "echo '"+JSONSTR+"' |js -r '. | @csv' >"+RegisterFileName+"\n";
+				JQCode+= " jq -n -r '["+JSONSTR+"] | .[] | to_entries | map(.value) | @csv' >" +RegisterFileName+"\n";
+			
 			}
 			
 			
