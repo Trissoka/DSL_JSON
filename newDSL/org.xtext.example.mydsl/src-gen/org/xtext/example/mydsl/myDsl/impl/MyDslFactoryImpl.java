@@ -69,13 +69,18 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
       case MyDslPackage.FUN: return createFun();
       case MyDslPackage.COUNT_JSON: return createCountJson();
       case MyDslPackage.READ_JSON: return createReadJson();
+      case MyDslPackage.PRINT_JSON: return createPrintJson();
       case MyDslPackage.WRITE_JSON: return createWriteJson();
       case MyDslPackage.WRITE_CSV: return createWriteCSV();
       case MyDslPackage.REMOVE: return createRemove();
       case MyDslPackage.ADD: return createAdd();
       case MyDslPackage.GET: return createGet();
       case MyDslPackage.SORT: return createSort();
-      case MyDslPackage.JSON: return createJSON();
+      case MyDslPackage.SHOW: return createShow();
+      case MyDslPackage.TYPE_REFERENCE: return createTypeReference();
+      case MyDslPackage.TYPE_INT: return createTypeInt();
+      case MyDslPackage.TYPE_STRING: return createTypeString();
+      case MyDslPackage.TYPE_JSON: return createTypeJSON();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -127,6 +132,18 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
   {
     ReadJsonImpl readJson = new ReadJsonImpl();
     return readJson;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public PrintJson createPrintJson()
+  {
+    PrintJsonImpl printJson = new PrintJsonImpl();
+    return printJson;
   }
 
   /**
@@ -207,10 +224,58 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
    * @generated
    */
   @Override
-  public JSON createJSON()
+  public Show createShow()
   {
-    JSONImpl json = new JSONImpl();
-    return json;
+    ShowImpl show = new ShowImpl();
+    return show;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public TypeReference createTypeReference()
+  {
+    TypeReferenceImpl typeReference = new TypeReferenceImpl();
+    return typeReference;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public TypeInt createTypeInt()
+  {
+    TypeIntImpl typeInt = new TypeIntImpl();
+    return typeInt;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public TypeString createTypeString()
+  {
+    TypeStringImpl typeString = new TypeStringImpl();
+    return typeString;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public TypeJSON createTypeJSON()
+  {
+    TypeJSONImpl typeJSON = new TypeJSONImpl();
+    return typeJSON;
   }
 
   /**

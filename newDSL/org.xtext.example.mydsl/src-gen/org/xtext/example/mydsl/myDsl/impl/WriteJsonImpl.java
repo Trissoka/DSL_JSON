@@ -11,8 +11,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.xtext.example.mydsl.myDsl.JSON;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
+import org.xtext.example.mydsl.myDsl.TypeJSON;
 import org.xtext.example.mydsl.myDsl.WriteJson;
 
 /**
@@ -25,7 +25,7 @@ import org.xtext.example.mydsl.myDsl.WriteJson;
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.WriteJsonImpl#getWriteJSON <em>Write JSON</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.WriteJsonImpl#getPath <em>Path</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.WriteJsonImpl#getFile <em>File</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.WriteJsonImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
@@ -73,14 +73,14 @@ public class WriteJsonImpl extends FunImpl implements WriteJson
   protected String path = PATH_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getFile() <em>File</em>}' containment reference.
+   * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getFile()
+   * @see #getValue()
    * @generated
    * @ordered
    */
-  protected JSON file;
+  protected TypeJSON value;
 
   /**
    * <!-- begin-user-doc -->
@@ -159,9 +159,9 @@ public class WriteJsonImpl extends FunImpl implements WriteJson
    * @generated
    */
   @Override
-  public JSON getFile()
+  public TypeJSON getValue()
   {
-    return file;
+    return value;
   }
 
   /**
@@ -169,13 +169,13 @@ public class WriteJsonImpl extends FunImpl implements WriteJson
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetFile(JSON newFile, NotificationChain msgs)
+  public NotificationChain basicSetValue(TypeJSON newValue, NotificationChain msgs)
   {
-    JSON oldFile = file;
-    file = newFile;
+    TypeJSON oldValue = value;
+    value = newValue;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.WRITE_JSON__FILE, oldFile, newFile);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.WRITE_JSON__VALUE, oldValue, newValue);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -187,20 +187,20 @@ public class WriteJsonImpl extends FunImpl implements WriteJson
    * @generated
    */
   @Override
-  public void setFile(JSON newFile)
+  public void setValue(TypeJSON newValue)
   {
-    if (newFile != file)
+    if (newValue != value)
     {
       NotificationChain msgs = null;
-      if (file != null)
-        msgs = ((InternalEObject)file).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.WRITE_JSON__FILE, null, msgs);
-      if (newFile != null)
-        msgs = ((InternalEObject)newFile).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.WRITE_JSON__FILE, null, msgs);
-      msgs = basicSetFile(newFile, msgs);
+      if (value != null)
+        msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.WRITE_JSON__VALUE, null, msgs);
+      if (newValue != null)
+        msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.WRITE_JSON__VALUE, null, msgs);
+      msgs = basicSetValue(newValue, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.WRITE_JSON__FILE, newFile, newFile));
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.WRITE_JSON__VALUE, newValue, newValue));
   }
 
   /**
@@ -213,8 +213,8 @@ public class WriteJsonImpl extends FunImpl implements WriteJson
   {
     switch (featureID)
     {
-      case MyDslPackage.WRITE_JSON__FILE:
-        return basicSetFile(null, msgs);
+      case MyDslPackage.WRITE_JSON__VALUE:
+        return basicSetValue(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -233,8 +233,8 @@ public class WriteJsonImpl extends FunImpl implements WriteJson
         return getWriteJSON();
       case MyDslPackage.WRITE_JSON__PATH:
         return getPath();
-      case MyDslPackage.WRITE_JSON__FILE:
-        return getFile();
+      case MyDslPackage.WRITE_JSON__VALUE:
+        return getValue();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -255,8 +255,8 @@ public class WriteJsonImpl extends FunImpl implements WriteJson
       case MyDslPackage.WRITE_JSON__PATH:
         setPath((String)newValue);
         return;
-      case MyDslPackage.WRITE_JSON__FILE:
-        setFile((JSON)newValue);
+      case MyDslPackage.WRITE_JSON__VALUE:
+        setValue((TypeJSON)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -278,8 +278,8 @@ public class WriteJsonImpl extends FunImpl implements WriteJson
       case MyDslPackage.WRITE_JSON__PATH:
         setPath(PATH_EDEFAULT);
         return;
-      case MyDslPackage.WRITE_JSON__FILE:
-        setFile((JSON)null);
+      case MyDslPackage.WRITE_JSON__VALUE:
+        setValue((TypeJSON)null);
         return;
     }
     super.eUnset(featureID);
@@ -299,8 +299,8 @@ public class WriteJsonImpl extends FunImpl implements WriteJson
         return WRITE_JSON_EDEFAULT == null ? writeJSON != null : !WRITE_JSON_EDEFAULT.equals(writeJSON);
       case MyDslPackage.WRITE_JSON__PATH:
         return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
-      case MyDslPackage.WRITE_JSON__FILE:
-        return file != null;
+      case MyDslPackage.WRITE_JSON__VALUE:
+        return value != null;
     }
     return super.eIsSet(featureID);
   }

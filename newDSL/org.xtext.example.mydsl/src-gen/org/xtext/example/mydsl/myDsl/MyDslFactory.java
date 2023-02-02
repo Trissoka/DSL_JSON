@@ -60,6 +60,15 @@ public interface MyDslFactory extends EFactory
   ReadJson createReadJson();
 
   /**
+   * Returns a new object of class '<em>Print Json</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Print Json</em>'.
+   * @generated
+   */
+  PrintJson createPrintJson();
+
+  /**
    * Returns a new object of class '<em>Write Json</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -114,13 +123,49 @@ public interface MyDslFactory extends EFactory
   Sort createSort();
 
   /**
-   * Returns a new object of class '<em>JSON</em>'.
+   * Returns a new object of class '<em>Show</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>JSON</em>'.
+   * @return a new object of class '<em>Show</em>'.
    * @generated
    */
-  JSON createJSON();
+  Show createShow();
+
+  /**
+   * Returns a new object of class '<em>Type Reference</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Type Reference</em>'.
+   * @generated
+   */
+  TypeReference createTypeReference();
+
+  /**
+   * Returns a new object of class '<em>Type Int</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Type Int</em>'.
+   * @generated
+   */
+  TypeInt createTypeInt();
+
+  /**
+   * Returns a new object of class '<em>Type String</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Type String</em>'.
+   * @generated
+   */
+  TypeString createTypeString();
+
+  /**
+   * Returns a new object of class '<em>Type JSON</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Type JSON</em>'.
+   * @generated
+   */
+  TypeJSON createTypeJSON();
 
   /**
    * Returns the package supported by this factory.

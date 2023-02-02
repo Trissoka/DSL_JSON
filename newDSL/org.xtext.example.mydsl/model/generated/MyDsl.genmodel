@@ -12,46 +12,57 @@
     <genClasses ecoreClass="MyDsl.ecore#//Fun"/>
     <genClasses ecoreClass="MyDsl.ecore#//CountJson">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//CountJson/countJSON"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//CountJson/file"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//CountJson/value"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//ReadJson">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//ReadJson/readJSON"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//ReadJson/path"/>
     </genClasses>
+    <genClasses ecoreClass="MyDsl.ecore#//PrintJson">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//PrintJson/printJson"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//PrintJson/value"/>
+    </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//WriteJson">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//WriteJson/writeJSON"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//WriteJson/path"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//WriteJson/file"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//WriteJson/value"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//WriteCSV">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//WriteCSV/writeCVS"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//WriteCSV/path"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//WriteCSV/file"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//WriteCSV/value"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//Remove">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Remove/removeElement"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Remove/id"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Remove/file"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//Add">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Add/addElement"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Add/file"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Add/id"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Add/value"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//Get">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Get/getElement"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Get/file"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Get/id"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//Sort">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Sort/sort"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Sort/file"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Sort/value"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Sort/attribute"/>
     </genClasses>
-    <genClasses ecoreClass="MyDsl.ecore#//JSON">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//JSON/attribute"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//JSON/valueSTR"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//JSON/valueINT"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//JSON/valueID"/>
+    <genClasses ecoreClass="MyDsl.ecore#//Show">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Show/show"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Show/name"/>
+    </genClasses>
+    <genClasses ecoreClass="MyDsl.ecore#//TypeReference"/>
+    <genClasses ecoreClass="MyDsl.ecore#//TypeInt">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//TypeInt/val"/>
+    </genClasses>
+    <genClasses ecoreClass="MyDsl.ecore#//TypeString">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//TypeString/val"/>
+    </genClasses>
+    <genClasses ecoreClass="MyDsl.ecore#//TypeJSON">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//TypeJSON/attribute"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//TypeJSON/value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

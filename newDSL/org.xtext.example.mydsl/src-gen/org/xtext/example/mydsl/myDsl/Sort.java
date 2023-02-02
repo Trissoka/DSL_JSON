@@ -14,7 +14,7 @@ package org.xtext.example.mydsl.myDsl;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.Sort#getSort <em>Sort</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.Sort#getFile <em>File</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.Sort#getValue <em>Value</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.Sort#getAttribute <em>Attribute</em>}</li>
  * </ul>
  *
@@ -47,26 +47,26 @@ public interface Sort extends Fun
   void setSort(String value);
 
   /**
-   * Returns the value of the '<em><b>File</b></em>' containment reference.
+   * Returns the value of the '<em><b>Value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>File</em>' containment reference.
-   * @see #setFile(JSON)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getSort_File()
-   * @model containment="true"
+   * @return the value of the '<em>Value</em>' attribute.
+   * @see #setValue(String)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getSort_Value()
+   * @model
    * @generated
    */
-  JSON getFile();
+  String getValue();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.Sort#getFile <em>File</em>}' containment reference.
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.Sort#getValue <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>File</em>' containment reference.
-   * @see #getFile()
+   * @param value the new value of the '<em>Value</em>' attribute.
+   * @see #getValue()
    * @generated
    */
-  void setFile(JSON value);
+  void setValue(String value);
 
   /**
    * Returns the value of the '<em><b>Attribute</b></em>' attribute.

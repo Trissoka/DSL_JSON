@@ -14,7 +14,7 @@ package org.xtext.example.mydsl.myDsl;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.Get#getGetElement <em>Get Element</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.Get#getFile <em>File</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.Get#getId <em>Id</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getGet()
@@ -46,25 +46,25 @@ public interface Get extends Fun
   void setGetElement(String value);
 
   /**
-   * Returns the value of the '<em><b>File</b></em>' containment reference.
+   * Returns the value of the '<em><b>Id</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>File</em>' containment reference.
-   * @see #setFile(JSON)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getGet_File()
-   * @model containment="true"
+   * @return the value of the '<em>Id</em>' attribute.
+   * @see #setId(String)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getGet_Id()
+   * @model
    * @generated
    */
-  JSON getFile();
+  String getId();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.Get#getFile <em>File</em>}' containment reference.
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.Get#getId <em>Id</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>File</em>' containment reference.
-   * @see #getFile()
+   * @param value the new value of the '<em>Id</em>' attribute.
+   * @see #getId()
    * @generated
    */
-  void setFile(JSON value);
+  void setId(String value);
 
 } // Get

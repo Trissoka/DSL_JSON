@@ -4,14 +4,11 @@
 package org.xtext.example.mydsl.myDsl.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.xtext.example.mydsl.myDsl.JSON;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 import org.xtext.example.mydsl.myDsl.Sort;
 
@@ -24,7 +21,7 @@ import org.xtext.example.mydsl.myDsl.Sort;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.SortImpl#getSort <em>Sort</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.SortImpl#getFile <em>File</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.SortImpl#getValue <em>Value</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.SortImpl#getAttribute <em>Attribute</em>}</li>
  * </ul>
  *
@@ -53,14 +50,24 @@ public class SortImpl extends FunImpl implements Sort
   protected String sort = SORT_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getFile() <em>File</em>}' containment reference.
+   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getFile()
+   * @see #getValue()
    * @generated
    * @ordered
    */
-  protected JSON file;
+  protected static final String VALUE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getValue()
+   * @generated
+   * @ordered
+   */
+  protected String value = VALUE_EDEFAULT;
 
   /**
    * The default value of the '{@link #getAttribute() <em>Attribute</em>}' attribute.
@@ -134,26 +141,9 @@ public class SortImpl extends FunImpl implements Sort
    * @generated
    */
   @Override
-  public JSON getFile()
+  public String getValue()
   {
-    return file;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetFile(JSON newFile, NotificationChain msgs)
-  {
-    JSON oldFile = file;
-    file = newFile;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.SORT__FILE, oldFile, newFile);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
+    return value;
   }
 
   /**
@@ -162,20 +152,12 @@ public class SortImpl extends FunImpl implements Sort
    * @generated
    */
   @Override
-  public void setFile(JSON newFile)
+  public void setValue(String newValue)
   {
-    if (newFile != file)
-    {
-      NotificationChain msgs = null;
-      if (file != null)
-        msgs = ((InternalEObject)file).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.SORT__FILE, null, msgs);
-      if (newFile != null)
-        msgs = ((InternalEObject)newFile).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.SORT__FILE, null, msgs);
-      msgs = basicSetFile(newFile, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.SORT__FILE, newFile, newFile));
+    String oldValue = value;
+    value = newValue;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.SORT__VALUE, oldValue, value));
   }
 
   /**
@@ -209,30 +191,14 @@ public class SortImpl extends FunImpl implements Sort
    * @generated
    */
   @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case MyDslPackage.SORT__FILE:
-        return basicSetFile(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
     {
       case MyDslPackage.SORT__SORT:
         return getSort();
-      case MyDslPackage.SORT__FILE:
-        return getFile();
+      case MyDslPackage.SORT__VALUE:
+        return getValue();
       case MyDslPackage.SORT__ATTRIBUTE:
         return getAttribute();
     }
@@ -252,8 +218,8 @@ public class SortImpl extends FunImpl implements Sort
       case MyDslPackage.SORT__SORT:
         setSort((String)newValue);
         return;
-      case MyDslPackage.SORT__FILE:
-        setFile((JSON)newValue);
+      case MyDslPackage.SORT__VALUE:
+        setValue((String)newValue);
         return;
       case MyDslPackage.SORT__ATTRIBUTE:
         setAttribute((String)newValue);
@@ -275,8 +241,8 @@ public class SortImpl extends FunImpl implements Sort
       case MyDslPackage.SORT__SORT:
         setSort(SORT_EDEFAULT);
         return;
-      case MyDslPackage.SORT__FILE:
-        setFile((JSON)null);
+      case MyDslPackage.SORT__VALUE:
+        setValue(VALUE_EDEFAULT);
         return;
       case MyDslPackage.SORT__ATTRIBUTE:
         setAttribute(ATTRIBUTE_EDEFAULT);
@@ -297,8 +263,8 @@ public class SortImpl extends FunImpl implements Sort
     {
       case MyDslPackage.SORT__SORT:
         return SORT_EDEFAULT == null ? sort != null : !SORT_EDEFAULT.equals(sort);
-      case MyDslPackage.SORT__FILE:
-        return file != null;
+      case MyDslPackage.SORT__VALUE:
+        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
       case MyDslPackage.SORT__ATTRIBUTE:
         return ATTRIBUTE_EDEFAULT == null ? attribute != null : !ATTRIBUTE_EDEFAULT.equals(attribute);
     }
@@ -318,6 +284,8 @@ public class SortImpl extends FunImpl implements Sort
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (sort: ");
     result.append(sort);
+    result.append(", value: ");
+    result.append(value);
     result.append(", attribute: ");
     result.append(attribute);
     result.append(')');

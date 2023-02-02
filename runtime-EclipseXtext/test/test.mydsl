@@ -1,0 +1,3 @@
+writeJSON("./path_for_json.json", {"Var1" = "foo";} )
+
+//writeJSON ("./path_for_json.json" , {(attribute+=STRING "=" (value+=TypeReference) ";")+ "}")

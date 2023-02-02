@@ -17,12 +17,16 @@ import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransi
 import org.xtext.example.mydsl.myDsl.Add;
 import org.xtext.example.mydsl.myDsl.CountJson;
 import org.xtext.example.mydsl.myDsl.Get;
-import org.xtext.example.mydsl.myDsl.JSON;
 import org.xtext.example.mydsl.myDsl.Model;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
+import org.xtext.example.mydsl.myDsl.PrintJson;
 import org.xtext.example.mydsl.myDsl.ReadJson;
 import org.xtext.example.mydsl.myDsl.Remove;
+import org.xtext.example.mydsl.myDsl.Show;
 import org.xtext.example.mydsl.myDsl.Sort;
+import org.xtext.example.mydsl.myDsl.TypeInt;
+import org.xtext.example.mydsl.myDsl.TypeJSON;
+import org.xtext.example.mydsl.myDsl.TypeString;
 import org.xtext.example.mydsl.myDsl.WriteCSV;
 import org.xtext.example.mydsl.myDsl.WriteJson;
 import org.xtext.example.mydsl.services.MyDslGrammarAccess;
@@ -50,11 +54,11 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 			case MyDslPackage.GET:
 				sequence_Get(context, (Get) semanticObject); 
 				return; 
-			case MyDslPackage.JSON:
-				sequence_JSON(context, (JSON) semanticObject); 
-				return; 
 			case MyDslPackage.MODEL:
 				sequence_Model(context, (Model) semanticObject); 
+				return; 
+			case MyDslPackage.PRINT_JSON:
+				sequence_PrintJson(context, (PrintJson) semanticObject); 
 				return; 
 			case MyDslPackage.READ_JSON:
 				sequence_ReadJson(context, (ReadJson) semanticObject); 
@@ -62,8 +66,20 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 			case MyDslPackage.REMOVE:
 				sequence_Remove(context, (Remove) semanticObject); 
 				return; 
+			case MyDslPackage.SHOW:
+				sequence_Show(context, (Show) semanticObject); 
+				return; 
 			case MyDslPackage.SORT:
 				sequence_Sort(context, (Sort) semanticObject); 
+				return; 
+			case MyDslPackage.TYPE_INT:
+				sequence_TypeInt(context, (TypeInt) semanticObject); 
+				return; 
+			case MyDslPackage.TYPE_JSON:
+				sequence_TypeJSON(context, (TypeJSON) semanticObject); 
+				return; 
+			case MyDslPackage.TYPE_STRING:
+				sequence_TypeString(context, (TypeString) semanticObject); 
 				return; 
 			case MyDslPackage.WRITE_CSV:
 				sequence_WriteCSV(context, (WriteCSV) semanticObject); 
@@ -83,22 +99,19 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Add returns Add
 	 *
 	 * Constraint:
-	 *     (addElement='add' file=JSON id=INT)
+	 *     (addElement='add' value=TypeJSON)
 	 * </pre>
 	 */
 	protected void sequence_Add(ISerializationContext context, Add semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.ADD__ADD_ELEMENT) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.ADD__ADD_ELEMENT));
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.ADD__FILE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.ADD__FILE));
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.ADD__ID) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.ADD__ID));
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.ADD__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.ADD__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getAddAccess().getAddElementAddKeyword_0_0(), semanticObject.getAddElement());
-		feeder.accept(grammarAccess.getAddAccess().getFileJSONParserRuleCall_2_0(), semanticObject.getFile());
-		feeder.accept(grammarAccess.getAddAccess().getIdINTTerminalRuleCall_4_0(), semanticObject.getId());
+		feeder.accept(grammarAccess.getAddAccess().getValueTypeJSONParserRuleCall_2_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -110,19 +123,19 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     CountJson returns CountJson
 	 *
 	 * Constraint:
-	 *     (countJSON='count' file=JSON)
+	 *     (countJSON='count' value=TypeString)
 	 * </pre>
 	 */
 	protected void sequence_CountJson(ISerializationContext context, CountJson semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.COUNT_JSON__COUNT_JSON) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.COUNT_JSON__COUNT_JSON));
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.COUNT_JSON__FILE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.COUNT_JSON__FILE));
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.COUNT_JSON__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.COUNT_JSON__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getCountJsonAccess().getCountJSONCountKeyword_0_0(), semanticObject.getCountJSON());
-		feeder.accept(grammarAccess.getCountJsonAccess().getFileJSONParserRuleCall_2_0(), semanticObject.getFile());
+		feeder.accept(grammarAccess.getCountJsonAccess().getValueTypeStringParserRuleCall_2_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -134,34 +147,20 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Get returns Get
 	 *
 	 * Constraint:
-	 *     (getElement='get' file=JSON)
+	 *     (getElement='get' id=STRING)
 	 * </pre>
 	 */
 	protected void sequence_Get(ISerializationContext context, Get semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.GET__GET_ELEMENT) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.GET__GET_ELEMENT));
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.GET__FILE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.GET__FILE));
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.GET__ID) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.GET__ID));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getGetAccess().getGetElementGetKeyword_0_0(), semanticObject.getGetElement());
-		feeder.accept(grammarAccess.getGetAccess().getFileJSONParserRuleCall_2_0(), semanticObject.getFile());
+		feeder.accept(grammarAccess.getGetAccess().getIdSTRINGTerminalRuleCall_2_0(), semanticObject.getId());
 		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     JSON returns JSON
-	 *
-	 * Constraint:
-	 *     (attribute+=ID+ | (attribute+=STRING (valueSTR+=STRING | valueINT+=INT | valueID+=ID))+)
-	 * </pre>
-	 */
-	protected void sequence_JSON(ISerializationContext context, JSON semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -176,6 +175,30 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 */
 	protected void sequence_Model(ISerializationContext context, Model semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Fun returns PrintJson
+	 *     PrintJson returns PrintJson
+	 *
+	 * Constraint:
+	 *     (printJson='print' value=STRING)
+	 * </pre>
+	 */
+	protected void sequence_PrintJson(ISerializationContext context, PrintJson semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.PRINT_JSON__PRINT_JSON) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.PRINT_JSON__PRINT_JSON));
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.PRINT_JSON__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.PRINT_JSON__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getPrintJsonAccess().getPrintJsonPrintKeyword_0_0(), semanticObject.getPrintJson());
+		feeder.accept(grammarAccess.getPrintJsonAccess().getValueSTRINGTerminalRuleCall_2_0(), semanticObject.getValue());
+		feeder.finish();
 	}
 	
 	
@@ -210,7 +233,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Remove returns Remove
 	 *
 	 * Constraint:
-	 *     (removeElement='remove' id=INT file=JSON)
+	 *     (removeElement='remove' id=STRING)
 	 * </pre>
 	 */
 	protected void sequence_Remove(ISerializationContext context, Remove semanticObject) {
@@ -219,14 +242,26 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.REMOVE__REMOVE_ELEMENT));
 			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.REMOVE__ID) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.REMOVE__ID));
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.REMOVE__FILE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.REMOVE__FILE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getRemoveAccess().getRemoveElementRemoveKeyword_0_0(), semanticObject.getRemoveElement());
-		feeder.accept(grammarAccess.getRemoveAccess().getIdINTTerminalRuleCall_2_0(), semanticObject.getId());
-		feeder.accept(grammarAccess.getRemoveAccess().getFileJSONParserRuleCall_4_0(), semanticObject.getFile());
+		feeder.accept(grammarAccess.getRemoveAccess().getIdSTRINGTerminalRuleCall_2_0(), semanticObject.getId());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Fun returns Show
+	 *     Show returns Show
+	 *
+	 * Constraint:
+	 *     (show='show' name=STRING?)
+	 * </pre>
+	 */
+	protected void sequence_Show(ISerializationContext context, Show semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -237,22 +272,79 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Sort returns Sort
 	 *
 	 * Constraint:
-	 *     (sort='sort' file=JSON attribute=STRING)
+	 *     (sort='sort' value=STRING attribute=STRING)
 	 * </pre>
 	 */
 	protected void sequence_Sort(ISerializationContext context, Sort semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.SORT__SORT) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.SORT__SORT));
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.SORT__FILE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.SORT__FILE));
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.SORT__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.SORT__VALUE));
 			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.SORT__ATTRIBUTE) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.SORT__ATTRIBUTE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getSortAccess().getSortSortKeyword_0_0(), semanticObject.getSort());
-		feeder.accept(grammarAccess.getSortAccess().getFileJSONParserRuleCall_1_0(), semanticObject.getFile());
+		feeder.accept(grammarAccess.getSortAccess().getValueSTRINGTerminalRuleCall_1_0(), semanticObject.getValue());
 		feeder.accept(grammarAccess.getSortAccess().getAttributeSTRINGTerminalRuleCall_3_0(), semanticObject.getAttribute());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     TypeReference returns TypeInt
+	 *     TypeInt returns TypeInt
+	 *
+	 * Constraint:
+	 *     val=INT
+	 * </pre>
+	 */
+	protected void sequence_TypeInt(ISerializationContext context, TypeInt semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.TYPE_INT__VAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.TYPE_INT__VAL));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getTypeIntAccess().getValINTTerminalRuleCall_0(), semanticObject.getVal());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     TypeReference returns TypeJSON
+	 *     TypeJSON returns TypeJSON
+	 *
+	 * Constraint:
+	 *     ((attribute+=STRING value+=TypeReference)+ | (attribute+=STRING value+=TypeReference+)+ | (attribute+=STRING value+=TypeReference+)+)
+	 * </pre>
+	 */
+	protected void sequence_TypeJSON(ISerializationContext context, TypeJSON semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     TypeReference returns TypeString
+	 *     TypeString returns TypeString
+	 *
+	 * Constraint:
+	 *     val=STRING
+	 * </pre>
+	 */
+	protected void sequence_TypeString(ISerializationContext context, TypeString semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.TYPE_STRING__VAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.TYPE_STRING__VAL));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getTypeStringAccess().getValSTRINGTerminalRuleCall_0(), semanticObject.getVal());
 		feeder.finish();
 	}
 	
@@ -264,23 +356,11 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     WriteCSV returns WriteCSV
 	 *
 	 * Constraint:
-	 *     (writeCVS='writeCSV' path=STRING file=JSON)
+	 *     (writeCVS='writeCSV' path=STRING value=TypeJSON?)
 	 * </pre>
 	 */
 	protected void sequence_WriteCSV(ISerializationContext context, WriteCSV semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.WRITE_CSV__WRITE_CVS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.WRITE_CSV__WRITE_CVS));
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.WRITE_CSV__PATH) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.WRITE_CSV__PATH));
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.WRITE_CSV__FILE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.WRITE_CSV__FILE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getWriteCSVAccess().getWriteCVSWriteCSVKeyword_0_0(), semanticObject.getWriteCVS());
-		feeder.accept(grammarAccess.getWriteCSVAccess().getPathSTRINGTerminalRuleCall_2_0(), semanticObject.getPath());
-		feeder.accept(grammarAccess.getWriteCSVAccess().getFileJSONParserRuleCall_4_0(), semanticObject.getFile());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -291,23 +371,11 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     WriteJson returns WriteJson
 	 *
 	 * Constraint:
-	 *     (writeJSON='writeJSON' path=STRING file=JSON)
+	 *     (writeJSON='writeJSON' path=STRING value=TypeJSON?)
 	 * </pre>
 	 */
 	protected void sequence_WriteJson(ISerializationContext context, WriteJson semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.WRITE_JSON__WRITE_JSON) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.WRITE_JSON__WRITE_JSON));
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.WRITE_JSON__PATH) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.WRITE_JSON__PATH));
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.WRITE_JSON__FILE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.WRITE_JSON__FILE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getWriteJsonAccess().getWriteJSONWriteJSONKeyword_0_0(), semanticObject.getWriteJSON());
-		feeder.accept(grammarAccess.getWriteJsonAccess().getPathSTRINGTerminalRuleCall_2_0(), semanticObject.getPath());
-		feeder.accept(grammarAccess.getWriteJsonAccess().getFileJSONParserRuleCall_4_0(), semanticObject.getFile());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

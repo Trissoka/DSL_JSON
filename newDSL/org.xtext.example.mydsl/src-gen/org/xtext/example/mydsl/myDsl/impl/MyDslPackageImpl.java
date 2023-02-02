@@ -17,9 +17,15 @@ import org.xtext.example.mydsl.myDsl.Get;
 import org.xtext.example.mydsl.myDsl.Model;
 import org.xtext.example.mydsl.myDsl.MyDslFactory;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
+import org.xtext.example.mydsl.myDsl.PrintJson;
 import org.xtext.example.mydsl.myDsl.ReadJson;
 import org.xtext.example.mydsl.myDsl.Remove;
+import org.xtext.example.mydsl.myDsl.Show;
 import org.xtext.example.mydsl.myDsl.Sort;
+import org.xtext.example.mydsl.myDsl.TypeInt;
+import org.xtext.example.mydsl.myDsl.TypeJSON;
+import org.xtext.example.mydsl.myDsl.TypeReference;
+import org.xtext.example.mydsl.myDsl.TypeString;
 import org.xtext.example.mydsl.myDsl.WriteCSV;
 import org.xtext.example.mydsl.myDsl.WriteJson;
 
@@ -58,6 +64,13 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   private EClass readJsonEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass printJsonEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -106,7 +119,35 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass jsonEClass = null;
+  private EClass showEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass typeReferenceEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass typeIntEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass typeStringEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass typeJSONEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -231,7 +272,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EReference getCountJson_File()
+  public EReference getCountJson_Value()
   {
     return (EReference)countJsonEClass.getEStructuralFeatures().get(1);
   }
@@ -275,6 +316,39 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
+  public EClass getPrintJson()
+  {
+    return printJsonEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getPrintJson_PrintJson()
+  {
+    return (EAttribute)printJsonEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getPrintJson_Value()
+  {
+    return (EAttribute)printJsonEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getWriteJson()
   {
     return writeJsonEClass;
@@ -308,7 +382,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EReference getWriteJson_File()
+  public EReference getWriteJson_Value()
   {
     return (EReference)writeJsonEClass.getEStructuralFeatures().get(2);
   }
@@ -352,7 +426,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EReference getWriteCSV_File()
+  public EReference getWriteCSV_Value()
   {
     return (EReference)writeCSVEClass.getEStructuralFeatures().get(2);
   }
@@ -396,17 +470,6 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EReference getRemove_File()
-  {
-    return (EReference)removeEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EClass getAdd()
   {
     return addEClass;
@@ -429,20 +492,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EReference getAdd_File()
+  public EReference getAdd_Value()
   {
     return (EReference)addEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getAdd_Id()
-  {
-    return (EAttribute)addEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -473,9 +525,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EReference getGet_File()
+  public EAttribute getGet_Id()
   {
-    return (EReference)getEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)getEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -506,9 +558,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EReference getSort_File()
+  public EAttribute getSort_Value()
   {
-    return (EReference)sortEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)sortEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -528,9 +580,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EClass getJSON()
+  public EClass getShow()
   {
-    return jsonEClass;
+    return showEClass;
   }
 
   /**
@@ -539,9 +591,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EAttribute getJSON_Attribute()
+  public EAttribute getShow_Show()
   {
-    return (EAttribute)jsonEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)showEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -550,9 +602,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EAttribute getJSON_ValueSTR()
+  public EAttribute getShow_Name()
   {
-    return (EAttribute)jsonEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)showEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -561,9 +613,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EAttribute getJSON_ValueINT()
+  public EClass getTypeReference()
   {
-    return (EAttribute)jsonEClass.getEStructuralFeatures().get(2);
+    return typeReferenceEClass;
   }
 
   /**
@@ -572,9 +624,75 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   @Override
-  public EAttribute getJSON_ValueID()
+  public EClass getTypeInt()
   {
-    return (EAttribute)jsonEClass.getEStructuralFeatures().get(3);
+    return typeIntEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getTypeInt_Val()
+  {
+    return (EAttribute)typeIntEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getTypeString()
+  {
+    return typeStringEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getTypeString_Val()
+  {
+    return (EAttribute)typeStringEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getTypeJSON()
+  {
+    return typeJSONEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getTypeJSON_Attribute()
+  {
+    return (EAttribute)typeJSONEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTypeJSON_Value()
+  {
+    return (EReference)typeJSONEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -615,46 +733,58 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
 
     countJsonEClass = createEClass(COUNT_JSON);
     createEAttribute(countJsonEClass, COUNT_JSON__COUNT_JSON);
-    createEReference(countJsonEClass, COUNT_JSON__FILE);
+    createEReference(countJsonEClass, COUNT_JSON__VALUE);
 
     readJsonEClass = createEClass(READ_JSON);
     createEAttribute(readJsonEClass, READ_JSON__READ_JSON);
     createEAttribute(readJsonEClass, READ_JSON__PATH);
 
+    printJsonEClass = createEClass(PRINT_JSON);
+    createEAttribute(printJsonEClass, PRINT_JSON__PRINT_JSON);
+    createEAttribute(printJsonEClass, PRINT_JSON__VALUE);
+
     writeJsonEClass = createEClass(WRITE_JSON);
     createEAttribute(writeJsonEClass, WRITE_JSON__WRITE_JSON);
     createEAttribute(writeJsonEClass, WRITE_JSON__PATH);
-    createEReference(writeJsonEClass, WRITE_JSON__FILE);
+    createEReference(writeJsonEClass, WRITE_JSON__VALUE);
 
     writeCSVEClass = createEClass(WRITE_CSV);
     createEAttribute(writeCSVEClass, WRITE_CSV__WRITE_CVS);
     createEAttribute(writeCSVEClass, WRITE_CSV__PATH);
-    createEReference(writeCSVEClass, WRITE_CSV__FILE);
+    createEReference(writeCSVEClass, WRITE_CSV__VALUE);
 
     removeEClass = createEClass(REMOVE);
     createEAttribute(removeEClass, REMOVE__REMOVE_ELEMENT);
     createEAttribute(removeEClass, REMOVE__ID);
-    createEReference(removeEClass, REMOVE__FILE);
 
     addEClass = createEClass(ADD);
     createEAttribute(addEClass, ADD__ADD_ELEMENT);
-    createEReference(addEClass, ADD__FILE);
-    createEAttribute(addEClass, ADD__ID);
+    createEReference(addEClass, ADD__VALUE);
 
     getEClass = createEClass(GET);
     createEAttribute(getEClass, GET__GET_ELEMENT);
-    createEReference(getEClass, GET__FILE);
+    createEAttribute(getEClass, GET__ID);
 
     sortEClass = createEClass(SORT);
     createEAttribute(sortEClass, SORT__SORT);
-    createEReference(sortEClass, SORT__FILE);
+    createEAttribute(sortEClass, SORT__VALUE);
     createEAttribute(sortEClass, SORT__ATTRIBUTE);
 
-    jsonEClass = createEClass(JSON);
-    createEAttribute(jsonEClass, JSON__ATTRIBUTE);
-    createEAttribute(jsonEClass, JSON__VALUE_STR);
-    createEAttribute(jsonEClass, JSON__VALUE_INT);
-    createEAttribute(jsonEClass, JSON__VALUE_ID);
+    showEClass = createEClass(SHOW);
+    createEAttribute(showEClass, SHOW__SHOW);
+    createEAttribute(showEClass, SHOW__NAME);
+
+    typeReferenceEClass = createEClass(TYPE_REFERENCE);
+
+    typeIntEClass = createEClass(TYPE_INT);
+    createEAttribute(typeIntEClass, TYPE_INT__VAL);
+
+    typeStringEClass = createEClass(TYPE_STRING);
+    createEAttribute(typeStringEClass, TYPE_STRING__VAL);
+
+    typeJSONEClass = createEClass(TYPE_JSON);
+    createEAttribute(typeJSONEClass, TYPE_JSON__ATTRIBUTE);
+    createEReference(typeJSONEClass, TYPE_JSON__VALUE);
   }
 
   /**
@@ -688,12 +818,17 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     // Add supertypes to classes
     countJsonEClass.getESuperTypes().add(this.getFun());
     readJsonEClass.getESuperTypes().add(this.getFun());
+    printJsonEClass.getESuperTypes().add(this.getFun());
     writeJsonEClass.getESuperTypes().add(this.getFun());
     writeCSVEClass.getESuperTypes().add(this.getFun());
     removeEClass.getESuperTypes().add(this.getFun());
     addEClass.getESuperTypes().add(this.getFun());
     getEClass.getESuperTypes().add(this.getFun());
     sortEClass.getESuperTypes().add(this.getFun());
+    showEClass.getESuperTypes().add(this.getFun());
+    typeIntEClass.getESuperTypes().add(this.getTypeReference());
+    typeStringEClass.getESuperTypes().add(this.getTypeReference());
+    typeJSONEClass.getESuperTypes().add(this.getTypeReference());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -703,46 +838,58 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
 
     initEClass(countJsonEClass, CountJson.class, "CountJson", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getCountJson_CountJSON(), ecorePackage.getEString(), "countJSON", null, 0, 1, CountJson.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCountJson_File(), this.getJSON(), null, "file", null, 0, 1, CountJson.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCountJson_Value(), this.getTypeString(), null, "value", null, 0, 1, CountJson.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(readJsonEClass, ReadJson.class, "ReadJson", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getReadJson_ReadJSON(), ecorePackage.getEString(), "readJSON", null, 0, 1, ReadJson.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getReadJson_Path(), ecorePackage.getEString(), "path", null, 0, 1, ReadJson.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(printJsonEClass, PrintJson.class, "PrintJson", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getPrintJson_PrintJson(), ecorePackage.getEString(), "printJson", null, 0, 1, PrintJson.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPrintJson_Value(), ecorePackage.getEString(), "value", null, 0, 1, PrintJson.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(writeJsonEClass, WriteJson.class, "WriteJson", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getWriteJson_WriteJSON(), ecorePackage.getEString(), "writeJSON", null, 0, 1, WriteJson.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getWriteJson_Path(), ecorePackage.getEString(), "path", null, 0, 1, WriteJson.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getWriteJson_File(), this.getJSON(), null, "file", null, 0, 1, WriteJson.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getWriteJson_Value(), this.getTypeJSON(), null, "value", null, 0, 1, WriteJson.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(writeCSVEClass, WriteCSV.class, "WriteCSV", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getWriteCSV_WriteCVS(), ecorePackage.getEString(), "writeCVS", null, 0, 1, WriteCSV.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getWriteCSV_Path(), ecorePackage.getEString(), "path", null, 0, 1, WriteCSV.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getWriteCSV_File(), this.getJSON(), null, "file", null, 0, 1, WriteCSV.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getWriteCSV_Value(), this.getTypeJSON(), null, "value", null, 0, 1, WriteCSV.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(removeEClass, Remove.class, "Remove", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getRemove_RemoveElement(), ecorePackage.getEString(), "removeElement", null, 0, 1, Remove.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getRemove_Id(), ecorePackage.getEInt(), "id", null, 0, 1, Remove.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRemove_File(), this.getJSON(), null, "file", null, 0, 1, Remove.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRemove_Id(), ecorePackage.getEString(), "id", null, 0, 1, Remove.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(addEClass, Add.class, "Add", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getAdd_AddElement(), ecorePackage.getEString(), "addElement", null, 0, 1, Add.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getAdd_File(), this.getJSON(), null, "file", null, 0, 1, Add.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAdd_Id(), ecorePackage.getEInt(), "id", null, 0, 1, Add.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAdd_Value(), this.getTypeJSON(), null, "value", null, 0, 1, Add.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(getEClass, Get.class, "Get", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getGet_GetElement(), ecorePackage.getEString(), "getElement", null, 0, 1, Get.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getGet_File(), this.getJSON(), null, "file", null, 0, 1, Get.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGet_Id(), ecorePackage.getEString(), "id", null, 0, 1, Get.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(sortEClass, Sort.class, "Sort", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getSort_Sort(), ecorePackage.getEString(), "sort", null, 0, 1, Sort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSort_File(), this.getJSON(), null, "file", null, 0, 1, Sort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSort_Value(), ecorePackage.getEString(), "value", null, 0, 1, Sort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getSort_Attribute(), ecorePackage.getEString(), "attribute", null, 0, 1, Sort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(jsonEClass, org.xtext.example.mydsl.myDsl.JSON.class, "JSON", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getJSON_Attribute(), ecorePackage.getEString(), "attribute", null, 0, -1, org.xtext.example.mydsl.myDsl.JSON.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getJSON_ValueSTR(), ecorePackage.getEString(), "valueSTR", null, 0, -1, org.xtext.example.mydsl.myDsl.JSON.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getJSON_ValueINT(), ecorePackage.getEInt(), "valueINT", null, 0, -1, org.xtext.example.mydsl.myDsl.JSON.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getJSON_ValueID(), ecorePackage.getEString(), "valueID", null, 0, -1, org.xtext.example.mydsl.myDsl.JSON.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(showEClass, Show.class, "Show", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getShow_Show(), ecorePackage.getEString(), "show", null, 0, 1, Show.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getShow_Name(), ecorePackage.getEString(), "name", null, 0, 1, Show.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(typeReferenceEClass, TypeReference.class, "TypeReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(typeIntEClass, TypeInt.class, "TypeInt", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getTypeInt_Val(), ecorePackage.getEInt(), "val", null, 0, 1, TypeInt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(typeStringEClass, TypeString.class, "TypeString", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getTypeString_Val(), ecorePackage.getEString(), "val", null, 0, 1, TypeString.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(typeJSONEClass, TypeJSON.class, "TypeJSON", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getTypeJSON_Attribute(), ecorePackage.getEString(), "attribute", null, 0, -1, TypeJSON.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTypeJSON_Value(), this.getTypeReference(), null, "value", null, 0, -1, TypeJSON.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

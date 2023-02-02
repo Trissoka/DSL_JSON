@@ -4,15 +4,12 @@
 package org.xtext.example.mydsl.myDsl.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.xtext.example.mydsl.myDsl.Get;
-import org.xtext.example.mydsl.myDsl.JSON;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 
 /**
@@ -24,7 +21,7 @@ import org.xtext.example.mydsl.myDsl.MyDslPackage;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.GetImpl#getGetElement <em>Get Element</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.GetImpl#getFile <em>File</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.GetImpl#getId <em>Id</em>}</li>
  * </ul>
  *
  * @generated
@@ -52,14 +49,24 @@ public class GetImpl extends FunImpl implements Get
   protected String getElement = GET_ELEMENT_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getFile() <em>File</em>}' containment reference.
+   * The default value of the '{@link #getId() <em>Id</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getFile()
+   * @see #getId()
    * @generated
    * @ordered
    */
-  protected JSON file;
+  protected static final String ID_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getId()
+   * @generated
+   * @ordered
+   */
+  protected String id = ID_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -113,9 +120,9 @@ public class GetImpl extends FunImpl implements Get
    * @generated
    */
   @Override
-  public JSON getFile()
+  public String getId()
   {
-    return file;
+    return id;
   }
 
   /**
@@ -123,54 +130,13 @@ public class GetImpl extends FunImpl implements Get
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetFile(JSON newFile, NotificationChain msgs)
+  @Override
+  public void setId(String newId)
   {
-    JSON oldFile = file;
-    file = newFile;
+    String oldId = id;
+    id = newId;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.GET__FILE, oldFile, newFile);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setFile(JSON newFile)
-  {
-    if (newFile != file)
-    {
-      NotificationChain msgs = null;
-      if (file != null)
-        msgs = ((InternalEObject)file).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.GET__FILE, null, msgs);
-      if (newFile != null)
-        msgs = ((InternalEObject)newFile).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.GET__FILE, null, msgs);
-      msgs = basicSetFile(newFile, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.GET__FILE, newFile, newFile));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case MyDslPackage.GET__FILE:
-        return basicSetFile(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.GET__ID, oldId, id));
   }
 
   /**
@@ -185,8 +151,8 @@ public class GetImpl extends FunImpl implements Get
     {
       case MyDslPackage.GET__GET_ELEMENT:
         return getGetElement();
-      case MyDslPackage.GET__FILE:
-        return getFile();
+      case MyDslPackage.GET__ID:
+        return getId();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -204,8 +170,8 @@ public class GetImpl extends FunImpl implements Get
       case MyDslPackage.GET__GET_ELEMENT:
         setGetElement((String)newValue);
         return;
-      case MyDslPackage.GET__FILE:
-        setFile((JSON)newValue);
+      case MyDslPackage.GET__ID:
+        setId((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -224,8 +190,8 @@ public class GetImpl extends FunImpl implements Get
       case MyDslPackage.GET__GET_ELEMENT:
         setGetElement(GET_ELEMENT_EDEFAULT);
         return;
-      case MyDslPackage.GET__FILE:
-        setFile((JSON)null);
+      case MyDslPackage.GET__ID:
+        setId(ID_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -243,8 +209,8 @@ public class GetImpl extends FunImpl implements Get
     {
       case MyDslPackage.GET__GET_ELEMENT:
         return GET_ELEMENT_EDEFAULT == null ? getElement != null : !GET_ELEMENT_EDEFAULT.equals(getElement);
-      case MyDslPackage.GET__FILE:
-        return file != null;
+      case MyDslPackage.GET__ID:
+        return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
     }
     return super.eIsSet(featureID);
   }
@@ -262,6 +228,8 @@ public class GetImpl extends FunImpl implements Get
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (getElement: ");
     result.append(getElement);
+    result.append(", id: ");
+    result.append(id);
     result.append(')');
     return result.toString();
   }

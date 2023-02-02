@@ -33,6 +33,43 @@ public class JQ_Compiler {
 		_model = model;
 	}
 	
+	public String recurrenceRead(TypeJSON s)
+	{
+		EList<String> atts= s.getAttribute();
+		EList<TypeReference> vals= s.getValue();
+		List<String> v = new ArrayList<String>();
+		
+		String retour = "{";
+		
+		for(TypeReference tr : vals) {
+			if (tr instanceof TypeString) {
+				TypeString ts = (TypeString) tr;
+				String se = "\"" + ts.getVal() + "\"";
+				v.add(se);
+			}
+			else if (tr instanceof TypeInt) {
+				TypeInt ts = (TypeInt) tr;
+				String re = "" + ts.getVal();
+				v.add(re);
+			}
+			else if (tr instanceof TypeJSON) {
+				TypeJSON ts = (TypeJSON) tr;
+				String sj = recurrenceRead(ts);
+				v.add(sj);
+			}
+		}
+		
+		int lenght=atts.size();
+		
+		for(int i=0;i<lenght;i++) {
+			retour+="\""+atts.get(i)+"\" : "+v.get(i)+" , ";
+		}
+		
+		retour += "}";
+		
+		return retour;
+	}
+	
 	
 	public String compileAndRun() throws IOException {
 		
@@ -100,31 +137,10 @@ public class JQ_Compiler {
 				
 				String RegisterFileName= w.getPath();
 				TypeJSON data = w.getValue();
-				EList<String> atts= data.getAttribute();
-				EList<TypeReference> vals= data.getValue();
-				List<String> v = new ArrayList<String>();
-				for(TypeReference tr : vals) {
-					if (tr instanceof TypeString) {
-						TypeString ts = (TypeString) tr;
-						String se = ts.getVal();
-						v.add(se);
-					}
-					else if (tr instanceof TypeInt) {
-						TypeInt ts = (TypeInt) tr;
-						String re = "" + ts.getVal();
-						v.add(re);
-					}
-				}
-				int lenght=atts.size();
 				
-				String JSONSTR= "{ ";
-				for(int i=0;i<lenght;i++) {
-					JSONSTR+="\"" + atts.get(i)+"\" : \""+v.get(i)+"\" , ";
-					
-				}
-				JSONSTR+=" } ";
+				String retour = recurrenceRead(data);
 				
-				JQCode+= " jq -n -r '["+JSONSTR+"] | .[] | to_entries | map(.value) | @csv' >" +RegisterFileName+"\n";
+				JQCode+= " jq -n -r '["+retour+"] | .[] | to_entries | map(.value) | @csv' >" +RegisterFileName+"\n";
 			
 			}
 			
@@ -142,7 +158,11 @@ public class JQ_Compiler {
 		Files.write(JQCode.getBytes(), new File(JQ_OUTPUT));
 		
 		
-		Process p = Runtime.getRuntime().exec("bash "+ JQ_OUTPUT);
+		//Process p = Runtime.getRuntime().exec("bash "+ JQ_OUTPUT);
+		
+		Process p = System.getProperty("os.name").toLowerCase().contains("windows") ? 
+			    Runtime.getRuntime().exec(new String[]{"powershell", "docker run -v ${PWD}:/app -w /app/ dsl_jq ./foo.sh"}) :
+			    Runtime.getRuntime().exec(new String[]{"./test_dock_jq.sh"});
 		
 		// output
 		BufferedReader stdInput = new BufferedReader(new

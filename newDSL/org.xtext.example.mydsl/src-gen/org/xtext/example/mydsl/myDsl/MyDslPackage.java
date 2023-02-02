@@ -124,13 +124,13 @@ public interface MyDslPackage extends EPackage
   int COUNT_JSON__COUNT_JSON = FUN_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>File</b></em>' containment reference.
+   * The feature id for the '<em><b>Value</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COUNT_JSON__FILE = FUN_FEATURE_COUNT + 1;
+  int COUNT_JSON__VALUE = FUN_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Count Json</em>' class.
@@ -179,6 +179,43 @@ public interface MyDslPackage extends EPackage
   int READ_JSON_FEATURE_COUNT = FUN_FEATURE_COUNT + 2;
 
   /**
+   * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.PrintJsonImpl <em>Print Json</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mydsl.myDsl.impl.PrintJsonImpl
+   * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getPrintJson()
+   * @generated
+   */
+  int PRINT_JSON = 4;
+
+  /**
+   * The feature id for the '<em><b>Print Json</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRINT_JSON__PRINT_JSON = FUN_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRINT_JSON__VALUE = FUN_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Print Json</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRINT_JSON_FEATURE_COUNT = FUN_FEATURE_COUNT + 2;
+
+  /**
    * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.WriteJsonImpl <em>Write Json</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -186,7 +223,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getWriteJson()
    * @generated
    */
-  int WRITE_JSON = 4;
+  int WRITE_JSON = 5;
 
   /**
    * The feature id for the '<em><b>Write JSON</b></em>' attribute.
@@ -207,13 +244,13 @@ public interface MyDslPackage extends EPackage
   int WRITE_JSON__PATH = FUN_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>File</b></em>' containment reference.
+   * The feature id for the '<em><b>Value</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WRITE_JSON__FILE = FUN_FEATURE_COUNT + 2;
+  int WRITE_JSON__VALUE = FUN_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Write Json</em>' class.
@@ -232,7 +269,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getWriteCSV()
    * @generated
    */
-  int WRITE_CSV = 5;
+  int WRITE_CSV = 6;
 
   /**
    * The feature id for the '<em><b>Write CVS</b></em>' attribute.
@@ -253,13 +290,13 @@ public interface MyDslPackage extends EPackage
   int WRITE_CSV__PATH = FUN_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>File</b></em>' containment reference.
+   * The feature id for the '<em><b>Value</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WRITE_CSV__FILE = FUN_FEATURE_COUNT + 2;
+  int WRITE_CSV__VALUE = FUN_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Write CSV</em>' class.
@@ -278,7 +315,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getRemove()
    * @generated
    */
-  int REMOVE = 6;
+  int REMOVE = 7;
 
   /**
    * The feature id for the '<em><b>Remove Element</b></em>' attribute.
@@ -299,22 +336,13 @@ public interface MyDslPackage extends EPackage
   int REMOVE__ID = FUN_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>File</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int REMOVE__FILE = FUN_FEATURE_COUNT + 2;
-
-  /**
    * The number of structural features of the '<em>Remove</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int REMOVE_FEATURE_COUNT = FUN_FEATURE_COUNT + 3;
+  int REMOVE_FEATURE_COUNT = FUN_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.AddImpl <em>Add</em>}' class.
@@ -324,7 +352,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getAdd()
    * @generated
    */
-  int ADD = 7;
+  int ADD = 8;
 
   /**
    * The feature id for the '<em><b>Add Element</b></em>' attribute.
@@ -336,22 +364,13 @@ public interface MyDslPackage extends EPackage
   int ADD__ADD_ELEMENT = FUN_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>File</b></em>' containment reference.
+   * The feature id for the '<em><b>Value</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ADD__FILE = FUN_FEATURE_COUNT + 1;
-
-  /**
-   * The feature id for the '<em><b>Id</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ADD__ID = FUN_FEATURE_COUNT + 2;
+  int ADD__VALUE = FUN_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Add</em>' class.
@@ -360,7 +379,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ADD_FEATURE_COUNT = FUN_FEATURE_COUNT + 3;
+  int ADD_FEATURE_COUNT = FUN_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.GetImpl <em>Get</em>}' class.
@@ -370,7 +389,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getGet()
    * @generated
    */
-  int GET = 8;
+  int GET = 9;
 
   /**
    * The feature id for the '<em><b>Get Element</b></em>' attribute.
@@ -382,13 +401,13 @@ public interface MyDslPackage extends EPackage
   int GET__GET_ELEMENT = FUN_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>File</b></em>' containment reference.
+   * The feature id for the '<em><b>Id</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GET__FILE = FUN_FEATURE_COUNT + 1;
+  int GET__ID = FUN_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Get</em>' class.
@@ -407,7 +426,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getSort()
    * @generated
    */
-  int SORT = 9;
+  int SORT = 10;
 
   /**
    * The feature id for the '<em><b>Sort</b></em>' attribute.
@@ -419,13 +438,13 @@ public interface MyDslPackage extends EPackage
   int SORT__SORT = FUN_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>File</b></em>' containment reference.
+   * The feature id for the '<em><b>Value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SORT__FILE = FUN_FEATURE_COUNT + 1;
+  int SORT__VALUE = FUN_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Attribute</b></em>' attribute.
@@ -446,14 +465,126 @@ public interface MyDslPackage extends EPackage
   int SORT_FEATURE_COUNT = FUN_FEATURE_COUNT + 3;
 
   /**
-   * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.JSONImpl <em>JSON</em>}' class.
+   * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.ShowImpl <em>Show</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.xtext.example.mydsl.myDsl.impl.JSONImpl
-   * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getJSON()
+   * @see org.xtext.example.mydsl.myDsl.impl.ShowImpl
+   * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getShow()
    * @generated
    */
-  int JSON = 10;
+  int SHOW = 11;
+
+  /**
+   * The feature id for the '<em><b>Show</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SHOW__SHOW = FUN_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SHOW__NAME = FUN_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Show</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SHOW_FEATURE_COUNT = FUN_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.TypeReferenceImpl <em>Type Reference</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mydsl.myDsl.impl.TypeReferenceImpl
+   * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getTypeReference()
+   * @generated
+   */
+  int TYPE_REFERENCE = 12;
+
+  /**
+   * The number of structural features of the '<em>Type Reference</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE_REFERENCE_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.TypeIntImpl <em>Type Int</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mydsl.myDsl.impl.TypeIntImpl
+   * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getTypeInt()
+   * @generated
+   */
+  int TYPE_INT = 13;
+
+  /**
+   * The feature id for the '<em><b>Val</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE_INT__VAL = TYPE_REFERENCE_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Type Int</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE_INT_FEATURE_COUNT = TYPE_REFERENCE_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.TypeStringImpl <em>Type String</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mydsl.myDsl.impl.TypeStringImpl
+   * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getTypeString()
+   * @generated
+   */
+  int TYPE_STRING = 14;
+
+  /**
+   * The feature id for the '<em><b>Val</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE_STRING__VAL = TYPE_REFERENCE_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Type String</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE_STRING_FEATURE_COUNT = TYPE_REFERENCE_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.TypeJSONImpl <em>Type JSON</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mydsl.myDsl.impl.TypeJSONImpl
+   * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getTypeJSON()
+   * @generated
+   */
+  int TYPE_JSON = 15;
 
   /**
    * The feature id for the '<em><b>Attribute</b></em>' attribute list.
@@ -462,43 +593,25 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int JSON__ATTRIBUTE = 0;
+  int TYPE_JSON__ATTRIBUTE = TYPE_REFERENCE_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Value STR</b></em>' attribute list.
+   * The feature id for the '<em><b>Value</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int JSON__VALUE_STR = 1;
+  int TYPE_JSON__VALUE = TYPE_REFERENCE_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Value INT</b></em>' attribute list.
+   * The number of structural features of the '<em>Type JSON</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int JSON__VALUE_INT = 2;
-
-  /**
-   * The feature id for the '<em><b>Value ID</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int JSON__VALUE_ID = 3;
-
-  /**
-   * The number of structural features of the '<em>JSON</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int JSON_FEATURE_COUNT = 4;
+  int TYPE_JSON_FEATURE_COUNT = TYPE_REFERENCE_FEATURE_COUNT + 2;
 
 
   /**
@@ -554,15 +667,15 @@ public interface MyDslPackage extends EPackage
   EAttribute getCountJson_CountJSON();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.myDsl.CountJson#getFile <em>File</em>}'.
+   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.myDsl.CountJson#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>File</em>'.
-   * @see org.xtext.example.mydsl.myDsl.CountJson#getFile()
+   * @return the meta object for the containment reference '<em>Value</em>'.
+   * @see org.xtext.example.mydsl.myDsl.CountJson#getValue()
    * @see #getCountJson()
    * @generated
    */
-  EReference getCountJson_File();
+  EReference getCountJson_Value();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.ReadJson <em>Read Json</em>}'.
@@ -597,6 +710,38 @@ public interface MyDslPackage extends EPackage
   EAttribute getReadJson_Path();
 
   /**
+   * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.PrintJson <em>Print Json</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Print Json</em>'.
+   * @see org.xtext.example.mydsl.myDsl.PrintJson
+   * @generated
+   */
+  EClass getPrintJson();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.PrintJson#getPrintJson <em>Print Json</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Print Json</em>'.
+   * @see org.xtext.example.mydsl.myDsl.PrintJson#getPrintJson()
+   * @see #getPrintJson()
+   * @generated
+   */
+  EAttribute getPrintJson_PrintJson();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.PrintJson#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see org.xtext.example.mydsl.myDsl.PrintJson#getValue()
+   * @see #getPrintJson()
+   * @generated
+   */
+  EAttribute getPrintJson_Value();
+
+  /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.WriteJson <em>Write Json</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -629,15 +774,15 @@ public interface MyDslPackage extends EPackage
   EAttribute getWriteJson_Path();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.myDsl.WriteJson#getFile <em>File</em>}'.
+   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.myDsl.WriteJson#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>File</em>'.
-   * @see org.xtext.example.mydsl.myDsl.WriteJson#getFile()
+   * @return the meta object for the containment reference '<em>Value</em>'.
+   * @see org.xtext.example.mydsl.myDsl.WriteJson#getValue()
    * @see #getWriteJson()
    * @generated
    */
-  EReference getWriteJson_File();
+  EReference getWriteJson_Value();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.WriteCSV <em>Write CSV</em>}'.
@@ -672,15 +817,15 @@ public interface MyDslPackage extends EPackage
   EAttribute getWriteCSV_Path();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.myDsl.WriteCSV#getFile <em>File</em>}'.
+   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.myDsl.WriteCSV#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>File</em>'.
-   * @see org.xtext.example.mydsl.myDsl.WriteCSV#getFile()
+   * @return the meta object for the containment reference '<em>Value</em>'.
+   * @see org.xtext.example.mydsl.myDsl.WriteCSV#getValue()
    * @see #getWriteCSV()
    * @generated
    */
-  EReference getWriteCSV_File();
+  EReference getWriteCSV_Value();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.Remove <em>Remove</em>}'.
@@ -715,17 +860,6 @@ public interface MyDslPackage extends EPackage
   EAttribute getRemove_Id();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.myDsl.Remove#getFile <em>File</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>File</em>'.
-   * @see org.xtext.example.mydsl.myDsl.Remove#getFile()
-   * @see #getRemove()
-   * @generated
-   */
-  EReference getRemove_File();
-
-  /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.Add <em>Add</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -747,26 +881,15 @@ public interface MyDslPackage extends EPackage
   EAttribute getAdd_AddElement();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.myDsl.Add#getFile <em>File</em>}'.
+   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.myDsl.Add#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>File</em>'.
-   * @see org.xtext.example.mydsl.myDsl.Add#getFile()
+   * @return the meta object for the containment reference '<em>Value</em>'.
+   * @see org.xtext.example.mydsl.myDsl.Add#getValue()
    * @see #getAdd()
    * @generated
    */
-  EReference getAdd_File();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Add#getId <em>Id</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Id</em>'.
-   * @see org.xtext.example.mydsl.myDsl.Add#getId()
-   * @see #getAdd()
-   * @generated
-   */
-  EAttribute getAdd_Id();
+  EReference getAdd_Value();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.Get <em>Get</em>}'.
@@ -790,15 +913,15 @@ public interface MyDslPackage extends EPackage
   EAttribute getGet_GetElement();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.myDsl.Get#getFile <em>File</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Get#getId <em>Id</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>File</em>'.
-   * @see org.xtext.example.mydsl.myDsl.Get#getFile()
+   * @return the meta object for the attribute '<em>Id</em>'.
+   * @see org.xtext.example.mydsl.myDsl.Get#getId()
    * @see #getGet()
    * @generated
    */
-  EReference getGet_File();
+  EAttribute getGet_Id();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.Sort <em>Sort</em>}'.
@@ -822,15 +945,15 @@ public interface MyDslPackage extends EPackage
   EAttribute getSort_Sort();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.myDsl.Sort#getFile <em>File</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Sort#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>File</em>'.
-   * @see org.xtext.example.mydsl.myDsl.Sort#getFile()
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see org.xtext.example.mydsl.myDsl.Sort#getValue()
    * @see #getSort()
    * @generated
    */
-  EReference getSort_File();
+  EAttribute getSort_Value();
 
   /**
    * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Sort#getAttribute <em>Attribute</em>}'.
@@ -844,58 +967,120 @@ public interface MyDslPackage extends EPackage
   EAttribute getSort_Attribute();
 
   /**
-   * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.JSON <em>JSON</em>}'.
+   * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.Show <em>Show</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>JSON</em>'.
-   * @see org.xtext.example.mydsl.myDsl.JSON
+   * @return the meta object for class '<em>Show</em>'.
+   * @see org.xtext.example.mydsl.myDsl.Show
    * @generated
    */
-  EClass getJSON();
+  EClass getShow();
 
   /**
-   * Returns the meta object for the attribute list '{@link org.xtext.example.mydsl.myDsl.JSON#getAttribute <em>Attribute</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Show#getShow <em>Show</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Show</em>'.
+   * @see org.xtext.example.mydsl.myDsl.Show#getShow()
+   * @see #getShow()
+   * @generated
+   */
+  EAttribute getShow_Show();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Show#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.xtext.example.mydsl.myDsl.Show#getName()
+   * @see #getShow()
+   * @generated
+   */
+  EAttribute getShow_Name();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.TypeReference <em>Type Reference</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Type Reference</em>'.
+   * @see org.xtext.example.mydsl.myDsl.TypeReference
+   * @generated
+   */
+  EClass getTypeReference();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.TypeInt <em>Type Int</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Type Int</em>'.
+   * @see org.xtext.example.mydsl.myDsl.TypeInt
+   * @generated
+   */
+  EClass getTypeInt();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.TypeInt#getVal <em>Val</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Val</em>'.
+   * @see org.xtext.example.mydsl.myDsl.TypeInt#getVal()
+   * @see #getTypeInt()
+   * @generated
+   */
+  EAttribute getTypeInt_Val();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.TypeString <em>Type String</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Type String</em>'.
+   * @see org.xtext.example.mydsl.myDsl.TypeString
+   * @generated
+   */
+  EClass getTypeString();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.TypeString#getVal <em>Val</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Val</em>'.
+   * @see org.xtext.example.mydsl.myDsl.TypeString#getVal()
+   * @see #getTypeString()
+   * @generated
+   */
+  EAttribute getTypeString_Val();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.TypeJSON <em>Type JSON</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Type JSON</em>'.
+   * @see org.xtext.example.mydsl.myDsl.TypeJSON
+   * @generated
+   */
+  EClass getTypeJSON();
+
+  /**
+   * Returns the meta object for the attribute list '{@link org.xtext.example.mydsl.myDsl.TypeJSON#getAttribute <em>Attribute</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Attribute</em>'.
-   * @see org.xtext.example.mydsl.myDsl.JSON#getAttribute()
-   * @see #getJSON()
+   * @see org.xtext.example.mydsl.myDsl.TypeJSON#getAttribute()
+   * @see #getTypeJSON()
    * @generated
    */
-  EAttribute getJSON_Attribute();
+  EAttribute getTypeJSON_Attribute();
 
   /**
-   * Returns the meta object for the attribute list '{@link org.xtext.example.mydsl.myDsl.JSON#getValueSTR <em>Value STR</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl.myDsl.TypeJSON#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Value STR</em>'.
-   * @see org.xtext.example.mydsl.myDsl.JSON#getValueSTR()
-   * @see #getJSON()
+   * @return the meta object for the containment reference list '<em>Value</em>'.
+   * @see org.xtext.example.mydsl.myDsl.TypeJSON#getValue()
+   * @see #getTypeJSON()
    * @generated
    */
-  EAttribute getJSON_ValueSTR();
-
-  /**
-   * Returns the meta object for the attribute list '{@link org.xtext.example.mydsl.myDsl.JSON#getValueINT <em>Value INT</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Value INT</em>'.
-   * @see org.xtext.example.mydsl.myDsl.JSON#getValueINT()
-   * @see #getJSON()
-   * @generated
-   */
-  EAttribute getJSON_ValueINT();
-
-  /**
-   * Returns the meta object for the attribute list '{@link org.xtext.example.mydsl.myDsl.JSON#getValueID <em>Value ID</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Value ID</em>'.
-   * @see org.xtext.example.mydsl.myDsl.JSON#getValueID()
-   * @see #getJSON()
-   * @generated
-   */
-  EAttribute getJSON_ValueID();
+  EReference getTypeJSON_Value();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -967,12 +1152,12 @@ public interface MyDslPackage extends EPackage
     EAttribute COUNT_JSON__COUNT_JSON = eINSTANCE.getCountJson_CountJSON();
 
     /**
-     * The meta object literal for the '<em><b>File</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference COUNT_JSON__FILE = eINSTANCE.getCountJson_File();
+    EReference COUNT_JSON__VALUE = eINSTANCE.getCountJson_Value();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.ReadJsonImpl <em>Read Json</em>}' class.
@@ -1001,6 +1186,32 @@ public interface MyDslPackage extends EPackage
     EAttribute READ_JSON__PATH = eINSTANCE.getReadJson_Path();
 
     /**
+     * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.PrintJsonImpl <em>Print Json</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mydsl.myDsl.impl.PrintJsonImpl
+     * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getPrintJson()
+     * @generated
+     */
+    EClass PRINT_JSON = eINSTANCE.getPrintJson();
+
+    /**
+     * The meta object literal for the '<em><b>Print Json</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PRINT_JSON__PRINT_JSON = eINSTANCE.getPrintJson_PrintJson();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PRINT_JSON__VALUE = eINSTANCE.getPrintJson_Value();
+
+    /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.WriteJsonImpl <em>Write Json</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1027,12 +1238,12 @@ public interface MyDslPackage extends EPackage
     EAttribute WRITE_JSON__PATH = eINSTANCE.getWriteJson_Path();
 
     /**
-     * The meta object literal for the '<em><b>File</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference WRITE_JSON__FILE = eINSTANCE.getWriteJson_File();
+    EReference WRITE_JSON__VALUE = eINSTANCE.getWriteJson_Value();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.WriteCSVImpl <em>Write CSV</em>}' class.
@@ -1061,12 +1272,12 @@ public interface MyDslPackage extends EPackage
     EAttribute WRITE_CSV__PATH = eINSTANCE.getWriteCSV_Path();
 
     /**
-     * The meta object literal for the '<em><b>File</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference WRITE_CSV__FILE = eINSTANCE.getWriteCSV_File();
+    EReference WRITE_CSV__VALUE = eINSTANCE.getWriteCSV_Value();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.RemoveImpl <em>Remove</em>}' class.
@@ -1095,14 +1306,6 @@ public interface MyDslPackage extends EPackage
     EAttribute REMOVE__ID = eINSTANCE.getRemove_Id();
 
     /**
-     * The meta object literal for the '<em><b>File</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference REMOVE__FILE = eINSTANCE.getRemove_File();
-
-    /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.AddImpl <em>Add</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1121,20 +1324,12 @@ public interface MyDslPackage extends EPackage
     EAttribute ADD__ADD_ELEMENT = eINSTANCE.getAdd_AddElement();
 
     /**
-     * The meta object literal for the '<em><b>File</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ADD__FILE = eINSTANCE.getAdd_File();
-
-    /**
-     * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ADD__ID = eINSTANCE.getAdd_Id();
+    EReference ADD__VALUE = eINSTANCE.getAdd_Value();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.GetImpl <em>Get</em>}' class.
@@ -1155,12 +1350,12 @@ public interface MyDslPackage extends EPackage
     EAttribute GET__GET_ELEMENT = eINSTANCE.getGet_GetElement();
 
     /**
-     * The meta object literal for the '<em><b>File</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference GET__FILE = eINSTANCE.getGet_File();
+    EAttribute GET__ID = eINSTANCE.getGet_Id();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.SortImpl <em>Sort</em>}' class.
@@ -1181,12 +1376,12 @@ public interface MyDslPackage extends EPackage
     EAttribute SORT__SORT = eINSTANCE.getSort_Sort();
 
     /**
-     * The meta object literal for the '<em><b>File</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference SORT__FILE = eINSTANCE.getSort_File();
+    EAttribute SORT__VALUE = eINSTANCE.getSort_Value();
 
     /**
      * The meta object literal for the '<em><b>Attribute</b></em>' attribute feature.
@@ -1197,14 +1392,86 @@ public interface MyDslPackage extends EPackage
     EAttribute SORT__ATTRIBUTE = eINSTANCE.getSort_Attribute();
 
     /**
-     * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.JSONImpl <em>JSON</em>}' class.
+     * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.ShowImpl <em>Show</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.xtext.example.mydsl.myDsl.impl.JSONImpl
-     * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getJSON()
+     * @see org.xtext.example.mydsl.myDsl.impl.ShowImpl
+     * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getShow()
      * @generated
      */
-    EClass JSON = eINSTANCE.getJSON();
+    EClass SHOW = eINSTANCE.getShow();
+
+    /**
+     * The meta object literal for the '<em><b>Show</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SHOW__SHOW = eINSTANCE.getShow_Show();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SHOW__NAME = eINSTANCE.getShow_Name();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.TypeReferenceImpl <em>Type Reference</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mydsl.myDsl.impl.TypeReferenceImpl
+     * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getTypeReference()
+     * @generated
+     */
+    EClass TYPE_REFERENCE = eINSTANCE.getTypeReference();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.TypeIntImpl <em>Type Int</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mydsl.myDsl.impl.TypeIntImpl
+     * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getTypeInt()
+     * @generated
+     */
+    EClass TYPE_INT = eINSTANCE.getTypeInt();
+
+    /**
+     * The meta object literal for the '<em><b>Val</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TYPE_INT__VAL = eINSTANCE.getTypeInt_Val();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.TypeStringImpl <em>Type String</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mydsl.myDsl.impl.TypeStringImpl
+     * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getTypeString()
+     * @generated
+     */
+    EClass TYPE_STRING = eINSTANCE.getTypeString();
+
+    /**
+     * The meta object literal for the '<em><b>Val</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TYPE_STRING__VAL = eINSTANCE.getTypeString_Val();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.TypeJSONImpl <em>Type JSON</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mydsl.myDsl.impl.TypeJSONImpl
+     * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getTypeJSON()
+     * @generated
+     */
+    EClass TYPE_JSON = eINSTANCE.getTypeJSON();
 
     /**
      * The meta object literal for the '<em><b>Attribute</b></em>' attribute list feature.
@@ -1212,31 +1479,15 @@ public interface MyDslPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute JSON__ATTRIBUTE = eINSTANCE.getJSON_Attribute();
+    EAttribute TYPE_JSON__ATTRIBUTE = eINSTANCE.getTypeJSON_Attribute();
 
     /**
-     * The meta object literal for the '<em><b>Value STR</b></em>' attribute list feature.
+     * The meta object literal for the '<em><b>Value</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute JSON__VALUE_STR = eINSTANCE.getJSON_ValueSTR();
-
-    /**
-     * The meta object literal for the '<em><b>Value INT</b></em>' attribute list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute JSON__VALUE_INT = eINSTANCE.getJSON_ValueINT();
-
-    /**
-     * The meta object literal for the '<em><b>Value ID</b></em>' attribute list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute JSON__VALUE_ID = eINSTANCE.getJSON_ValueID();
+    EReference TYPE_JSON__VALUE = eINSTANCE.getTypeJSON_Value();
 
   }
 

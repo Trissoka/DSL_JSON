@@ -1,0 +1,51 @@
+grammar org.xtext.example.mydsl1.MyDsl with org.eclipse.xtext.common.Terminals
+
+generate myDsl "http://www.xtext.org/example/mydsl1/MyDsl"
+
+Model:
+	sentences+=Fun*;
+	
+Variable:
+	declaration=VariableDeclaration '=' data=TypeReference;
+	
+VariableDeclaration:
+	name=ID ':' type=TypeReference;
+	
+TypeReference:
+	primitive=(INT|STRING|JSON);
+	
+Fun:
+	CountJson
+	| ReadJson
+	| PrintJson
+	| WriteJson
+	| WriteCSV
+	| Remove
+	| Add
+	| Get
+	| Sort
+;
+
+CountJson returns INT: countJSON = "count" "("file=Variable")" ;
+
+ReadJson returns Variable : readJSON = "read" "("path=Variable")";
+
+PrintJson : printJson = "print" "("file=Variable")";
+
+WriteJson : writeJSON = "writeJSON" "(" path=Variable "," file=Variable ")";
+
+WriteCSV: writeCVS = "writeCSV" "(" path=Variable "," file=Variable ")";
+
+Remove : removeElement = "remove" "(" id=Variable "," file=Variable ")";
+
+Add : addElement = "add" "(" file=Variable "," id=Variable ")";
+
+Get returns Variable: getElement = "get" "("file=Variable "," id=Variable ")";
+
+Sort returns Variable: sort = "sort" file=Variable "by" attribute=Variable ;
+
+
+JSON:
+	"{" (attribute+=STRING "=" (value+=STRING | value+=INT | value+=ID) ";")+ "}"
+	|"{" (attribute+=STRING ":" "{" (value+=JSON)+ "}" ";" )+ "}"  
+	|"{" (attribute+=STRING ":" "[" "{" (value+=JSON)+ "}" "]" ";" )+ "}" ;

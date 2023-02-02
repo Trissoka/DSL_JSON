@@ -12,8 +12,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.xtext.example.mydsl.myDsl.Add;
-import org.xtext.example.mydsl.myDsl.JSON;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
+import org.xtext.example.mydsl.myDsl.TypeJSON;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,8 +24,7 @@ import org.xtext.example.mydsl.myDsl.MyDslPackage;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.AddImpl#getAddElement <em>Add Element</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.AddImpl#getFile <em>File</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.AddImpl#getId <em>Id</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.AddImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
@@ -53,34 +52,14 @@ public class AddImpl extends FunImpl implements Add
   protected String addElement = ADD_ELEMENT_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getFile() <em>File</em>}' containment reference.
+   * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getFile()
+   * @see #getValue()
    * @generated
    * @ordered
    */
-  protected JSON file;
-
-  /**
-   * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getId()
-   * @generated
-   * @ordered
-   */
-  protected static final int ID_EDEFAULT = 0;
-
-  /**
-   * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getId()
-   * @generated
-   * @ordered
-   */
-  protected int id = ID_EDEFAULT;
+  protected TypeJSON value;
 
   /**
    * <!-- begin-user-doc -->
@@ -134,9 +113,9 @@ public class AddImpl extends FunImpl implements Add
    * @generated
    */
   @Override
-  public JSON getFile()
+  public TypeJSON getValue()
   {
-    return file;
+    return value;
   }
 
   /**
@@ -144,13 +123,13 @@ public class AddImpl extends FunImpl implements Add
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetFile(JSON newFile, NotificationChain msgs)
+  public NotificationChain basicSetValue(TypeJSON newValue, NotificationChain msgs)
   {
-    JSON oldFile = file;
-    file = newFile;
+    TypeJSON oldValue = value;
+    value = newValue;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.ADD__FILE, oldFile, newFile);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.ADD__VALUE, oldValue, newValue);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -162,45 +141,20 @@ public class AddImpl extends FunImpl implements Add
    * @generated
    */
   @Override
-  public void setFile(JSON newFile)
+  public void setValue(TypeJSON newValue)
   {
-    if (newFile != file)
+    if (newValue != value)
     {
       NotificationChain msgs = null;
-      if (file != null)
-        msgs = ((InternalEObject)file).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.ADD__FILE, null, msgs);
-      if (newFile != null)
-        msgs = ((InternalEObject)newFile).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.ADD__FILE, null, msgs);
-      msgs = basicSetFile(newFile, msgs);
+      if (value != null)
+        msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.ADD__VALUE, null, msgs);
+      if (newValue != null)
+        msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.ADD__VALUE, null, msgs);
+      msgs = basicSetValue(newValue, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.ADD__FILE, newFile, newFile));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public int getId()
-  {
-    return id;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setId(int newId)
-  {
-    int oldId = id;
-    id = newId;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.ADD__ID, oldId, id));
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.ADD__VALUE, newValue, newValue));
   }
 
   /**
@@ -213,8 +167,8 @@ public class AddImpl extends FunImpl implements Add
   {
     switch (featureID)
     {
-      case MyDslPackage.ADD__FILE:
-        return basicSetFile(null, msgs);
+      case MyDslPackage.ADD__VALUE:
+        return basicSetValue(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -231,10 +185,8 @@ public class AddImpl extends FunImpl implements Add
     {
       case MyDslPackage.ADD__ADD_ELEMENT:
         return getAddElement();
-      case MyDslPackage.ADD__FILE:
-        return getFile();
-      case MyDslPackage.ADD__ID:
-        return getId();
+      case MyDslPackage.ADD__VALUE:
+        return getValue();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -252,11 +204,8 @@ public class AddImpl extends FunImpl implements Add
       case MyDslPackage.ADD__ADD_ELEMENT:
         setAddElement((String)newValue);
         return;
-      case MyDslPackage.ADD__FILE:
-        setFile((JSON)newValue);
-        return;
-      case MyDslPackage.ADD__ID:
-        setId((Integer)newValue);
+      case MyDslPackage.ADD__VALUE:
+        setValue((TypeJSON)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -275,11 +224,8 @@ public class AddImpl extends FunImpl implements Add
       case MyDslPackage.ADD__ADD_ELEMENT:
         setAddElement(ADD_ELEMENT_EDEFAULT);
         return;
-      case MyDslPackage.ADD__FILE:
-        setFile((JSON)null);
-        return;
-      case MyDslPackage.ADD__ID:
-        setId(ID_EDEFAULT);
+      case MyDslPackage.ADD__VALUE:
+        setValue((TypeJSON)null);
         return;
     }
     super.eUnset(featureID);
@@ -297,10 +243,8 @@ public class AddImpl extends FunImpl implements Add
     {
       case MyDslPackage.ADD__ADD_ELEMENT:
         return ADD_ELEMENT_EDEFAULT == null ? addElement != null : !ADD_ELEMENT_EDEFAULT.equals(addElement);
-      case MyDslPackage.ADD__FILE:
-        return file != null;
-      case MyDslPackage.ADD__ID:
-        return id != ID_EDEFAULT;
+      case MyDslPackage.ADD__VALUE:
+        return value != null;
     }
     return super.eIsSet(featureID);
   }
@@ -318,8 +262,6 @@ public class AddImpl extends FunImpl implements Add
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (addElement: ");
     result.append(addElement);
-    result.append(", id: ");
-    result.append(id);
     result.append(')');
     return result.toString();
   }

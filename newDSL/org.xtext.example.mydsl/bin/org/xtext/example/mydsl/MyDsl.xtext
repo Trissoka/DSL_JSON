@@ -1,41 +1,51 @@
 grammar org.xtext.example.mydsl.MyDsl with org.eclipse.xtext.common.Terminals
 
-generate myDsl "http://www.xtext.org/example/mydsl/MyDsl"
-
+generate myDsl "http://www.xtext.org/example/mydsl/MyDsl" 
 
 Model:
-	sentences+=Fun*;
-	
-
+    sentences+=Fun*;
+    
 Fun:
-	CountJson
-	| ReadJson
-	| WriteJson
-	| WriteCSV
-	| Remove
-	| Add
-	| Get
-	| Sort
+    CountJson
+    | ReadJson
+    | PrintJson
+    | WriteJson
+    | WriteCSV
+    | Remove
+    | Add
+    | Get
+    | Sort
+    | Show
 ;
 
-CountJson : countJSON = "count" "("file=JSON")" ;
+
+CountJson: countJSON = "count" "("value=TypeString")" ;
 
 ReadJson : readJSON = "read" "("path=STRING")";
 
-WriteJson : writeJSON = "writeJSON" "(" path=STRING "," file=JSON ")";
+PrintJson : printJson = "print" "("value=STRING")";
 
-WriteCSV: writeCVS = "writeCSV" "(" path=STRING "," file=JSON ")";
+WriteJson : writeJSON = "writeJSON" "(" path=STRING ("," value=TypeJSON)? ")";
 
-Remove : removeElement = "remove" "(" id=INT "," file=JSON ")";
+WriteCSV: writeCVS = "writeCSV" "(" path=STRING ("," value=TypeJSON)? ")";
 
-Add : addElement = "add" "(" file=JSON "," id=INT ")";
+Remove : removeElement = "remove" "(" id=STRING ")";
 
-Get : getElement = "get" "("file=JSON "," ;
+Add : addElement = "add" "(" value=TypeJSON ")";
 
-Sort: sort = "sort" file=JSON "by" attribute=STRING ;
+Get: getElement = "get" "("id=STRING ")";
+
+Sort: sort = "sort" value=STRING "by" attribute=STRING ;
+
+Show: show = "show" ("(" name=STRING ")")?;
 
 
-JSON:
-	"{" (attribute+=ID ";")+ "}"
-	|"{" (attribute+=STRING "=" (valueSTR+=STRING | valueINT+=INT | valueID+=ID) ";")+ "}"
-;
+TypeReference : TypeInt|TypeString|TypeJSON;
+TypeInt : val=INT;
+TypeString : val=STRING;
+
+TypeJSON : "{" (attribute+=STRING "=" (value+=TypeReference) ";")+ "}"
+	|"{" (attribute+=STRING ":" "{" (value+=TypeReference)+ "}" ";" )+ "}" |
+	"{" (attribute+=STRING ":" "[" "{" (value+=TypeReference)+ "}" "]" ";" )+ "}";
+
+

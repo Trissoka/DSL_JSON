@@ -12,8 +12,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.xtext.example.mydsl.myDsl.CountJson;
-import org.xtext.example.mydsl.myDsl.JSON;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
+import org.xtext.example.mydsl.myDsl.TypeString;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,7 +24,7 @@ import org.xtext.example.mydsl.myDsl.MyDslPackage;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.CountJsonImpl#getCountJSON <em>Count JSON</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.CountJsonImpl#getFile <em>File</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.CountJsonImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
@@ -52,14 +52,14 @@ public class CountJsonImpl extends FunImpl implements CountJson
   protected String countJSON = COUNT_JSON_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getFile() <em>File</em>}' containment reference.
+   * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getFile()
+   * @see #getValue()
    * @generated
    * @ordered
    */
-  protected JSON file;
+  protected TypeString value;
 
   /**
    * <!-- begin-user-doc -->
@@ -113,9 +113,9 @@ public class CountJsonImpl extends FunImpl implements CountJson
    * @generated
    */
   @Override
-  public JSON getFile()
+  public TypeString getValue()
   {
-    return file;
+    return value;
   }
 
   /**
@@ -123,13 +123,13 @@ public class CountJsonImpl extends FunImpl implements CountJson
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetFile(JSON newFile, NotificationChain msgs)
+  public NotificationChain basicSetValue(TypeString newValue, NotificationChain msgs)
   {
-    JSON oldFile = file;
-    file = newFile;
+    TypeString oldValue = value;
+    value = newValue;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.COUNT_JSON__FILE, oldFile, newFile);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.COUNT_JSON__VALUE, oldValue, newValue);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -141,20 +141,20 @@ public class CountJsonImpl extends FunImpl implements CountJson
    * @generated
    */
   @Override
-  public void setFile(JSON newFile)
+  public void setValue(TypeString newValue)
   {
-    if (newFile != file)
+    if (newValue != value)
     {
       NotificationChain msgs = null;
-      if (file != null)
-        msgs = ((InternalEObject)file).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.COUNT_JSON__FILE, null, msgs);
-      if (newFile != null)
-        msgs = ((InternalEObject)newFile).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.COUNT_JSON__FILE, null, msgs);
-      msgs = basicSetFile(newFile, msgs);
+      if (value != null)
+        msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.COUNT_JSON__VALUE, null, msgs);
+      if (newValue != null)
+        msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.COUNT_JSON__VALUE, null, msgs);
+      msgs = basicSetValue(newValue, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.COUNT_JSON__FILE, newFile, newFile));
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.COUNT_JSON__VALUE, newValue, newValue));
   }
 
   /**
@@ -167,8 +167,8 @@ public class CountJsonImpl extends FunImpl implements CountJson
   {
     switch (featureID)
     {
-      case MyDslPackage.COUNT_JSON__FILE:
-        return basicSetFile(null, msgs);
+      case MyDslPackage.COUNT_JSON__VALUE:
+        return basicSetValue(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -185,8 +185,8 @@ public class CountJsonImpl extends FunImpl implements CountJson
     {
       case MyDslPackage.COUNT_JSON__COUNT_JSON:
         return getCountJSON();
-      case MyDslPackage.COUNT_JSON__FILE:
-        return getFile();
+      case MyDslPackage.COUNT_JSON__VALUE:
+        return getValue();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -204,8 +204,8 @@ public class CountJsonImpl extends FunImpl implements CountJson
       case MyDslPackage.COUNT_JSON__COUNT_JSON:
         setCountJSON((String)newValue);
         return;
-      case MyDslPackage.COUNT_JSON__FILE:
-        setFile((JSON)newValue);
+      case MyDslPackage.COUNT_JSON__VALUE:
+        setValue((TypeString)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -224,8 +224,8 @@ public class CountJsonImpl extends FunImpl implements CountJson
       case MyDslPackage.COUNT_JSON__COUNT_JSON:
         setCountJSON(COUNT_JSON_EDEFAULT);
         return;
-      case MyDslPackage.COUNT_JSON__FILE:
-        setFile((JSON)null);
+      case MyDslPackage.COUNT_JSON__VALUE:
+        setValue((TypeString)null);
         return;
     }
     super.eUnset(featureID);
@@ -243,8 +243,8 @@ public class CountJsonImpl extends FunImpl implements CountJson
     {
       case MyDslPackage.COUNT_JSON__COUNT_JSON:
         return COUNT_JSON_EDEFAULT == null ? countJSON != null : !COUNT_JSON_EDEFAULT.equals(countJSON);
-      case MyDslPackage.COUNT_JSON__FILE:
-        return file != null;
+      case MyDslPackage.COUNT_JSON__VALUE:
+        return value != null;
     }
     return super.eIsSet(featureID);
   }

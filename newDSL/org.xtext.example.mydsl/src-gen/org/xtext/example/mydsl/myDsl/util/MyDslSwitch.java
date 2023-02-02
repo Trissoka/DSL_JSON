@@ -103,6 +103,14 @@ public class MyDslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case MyDslPackage.PRINT_JSON:
+      {
+        PrintJson printJson = (PrintJson)theEObject;
+        T result = casePrintJson(printJson);
+        if (result == null) result = caseFun(printJson);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case MyDslPackage.WRITE_JSON:
       {
         WriteJson writeJson = (WriteJson)theEObject;
@@ -151,10 +159,42 @@ public class MyDslSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case MyDslPackage.JSON:
+      case MyDslPackage.SHOW:
       {
-        JSON json = (JSON)theEObject;
-        T result = caseJSON(json);
+        Show show = (Show)theEObject;
+        T result = caseShow(show);
+        if (result == null) result = caseFun(show);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MyDslPackage.TYPE_REFERENCE:
+      {
+        TypeReference typeReference = (TypeReference)theEObject;
+        T result = caseTypeReference(typeReference);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MyDslPackage.TYPE_INT:
+      {
+        TypeInt typeInt = (TypeInt)theEObject;
+        T result = caseTypeInt(typeInt);
+        if (result == null) result = caseTypeReference(typeInt);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MyDslPackage.TYPE_STRING:
+      {
+        TypeString typeString = (TypeString)theEObject;
+        T result = caseTypeString(typeString);
+        if (result == null) result = caseTypeReference(typeString);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MyDslPackage.TYPE_JSON:
+      {
+        TypeJSON typeJSON = (TypeJSON)theEObject;
+        T result = caseTypeJSON(typeJSON);
+        if (result == null) result = caseTypeReference(typeJSON);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -222,6 +262,22 @@ public class MyDslSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseReadJson(ReadJson object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Print Json</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Print Json</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePrintJson(PrintJson object)
   {
     return null;
   }
@@ -323,17 +379,81 @@ public class MyDslSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>JSON</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Show</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>JSON</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Show</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseJSON(JSON object)
+  public T caseShow(Show object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Type Reference</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Type Reference</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTypeReference(TypeReference object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Type Int</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Type Int</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTypeInt(TypeInt object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Type String</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Type String</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTypeString(TypeString object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Type JSON</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Type JSON</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTypeJSON(TypeJSON object)
   {
     return null;
   }

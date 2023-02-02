@@ -4,14 +4,11 @@
 package org.xtext.example.mydsl.myDsl.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.xtext.example.mydsl.myDsl.JSON;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 import org.xtext.example.mydsl.myDsl.Remove;
 
@@ -25,7 +22,6 @@ import org.xtext.example.mydsl.myDsl.Remove;
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.RemoveImpl#getRemoveElement <em>Remove Element</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.RemoveImpl#getId <em>Id</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.RemoveImpl#getFile <em>File</em>}</li>
  * </ul>
  *
  * @generated
@@ -60,7 +56,7 @@ public class RemoveImpl extends FunImpl implements Remove
    * @generated
    * @ordered
    */
-  protected static final int ID_EDEFAULT = 0;
+  protected static final String ID_EDEFAULT = null;
 
   /**
    * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
@@ -70,17 +66,7 @@ public class RemoveImpl extends FunImpl implements Remove
    * @generated
    * @ordered
    */
-  protected int id = ID_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getFile() <em>File</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getFile()
-   * @generated
-   * @ordered
-   */
-  protected JSON file;
+  protected String id = ID_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -134,7 +120,7 @@ public class RemoveImpl extends FunImpl implements Remove
    * @generated
    */
   @Override
-  public int getId()
+  public String getId()
   {
     return id;
   }
@@ -145,78 +131,12 @@ public class RemoveImpl extends FunImpl implements Remove
    * @generated
    */
   @Override
-  public void setId(int newId)
+  public void setId(String newId)
   {
-    int oldId = id;
+    String oldId = id;
     id = newId;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.REMOVE__ID, oldId, id));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public JSON getFile()
-  {
-    return file;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetFile(JSON newFile, NotificationChain msgs)
-  {
-    JSON oldFile = file;
-    file = newFile;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.REMOVE__FILE, oldFile, newFile);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setFile(JSON newFile)
-  {
-    if (newFile != file)
-    {
-      NotificationChain msgs = null;
-      if (file != null)
-        msgs = ((InternalEObject)file).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.REMOVE__FILE, null, msgs);
-      if (newFile != null)
-        msgs = ((InternalEObject)newFile).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.REMOVE__FILE, null, msgs);
-      msgs = basicSetFile(newFile, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.REMOVE__FILE, newFile, newFile));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case MyDslPackage.REMOVE__FILE:
-        return basicSetFile(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -233,8 +153,6 @@ public class RemoveImpl extends FunImpl implements Remove
         return getRemoveElement();
       case MyDslPackage.REMOVE__ID:
         return getId();
-      case MyDslPackage.REMOVE__FILE:
-        return getFile();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -253,10 +171,7 @@ public class RemoveImpl extends FunImpl implements Remove
         setRemoveElement((String)newValue);
         return;
       case MyDslPackage.REMOVE__ID:
-        setId((Integer)newValue);
-        return;
-      case MyDslPackage.REMOVE__FILE:
-        setFile((JSON)newValue);
+        setId((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -278,9 +193,6 @@ public class RemoveImpl extends FunImpl implements Remove
       case MyDslPackage.REMOVE__ID:
         setId(ID_EDEFAULT);
         return;
-      case MyDslPackage.REMOVE__FILE:
-        setFile((JSON)null);
-        return;
     }
     super.eUnset(featureID);
   }
@@ -298,9 +210,7 @@ public class RemoveImpl extends FunImpl implements Remove
       case MyDslPackage.REMOVE__REMOVE_ELEMENT:
         return REMOVE_ELEMENT_EDEFAULT == null ? removeElement != null : !REMOVE_ELEMENT_EDEFAULT.equals(removeElement);
       case MyDslPackage.REMOVE__ID:
-        return id != ID_EDEFAULT;
-      case MyDslPackage.REMOVE__FILE:
-        return file != null;
+        return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
     }
     return super.eIsSet(featureID);
   }

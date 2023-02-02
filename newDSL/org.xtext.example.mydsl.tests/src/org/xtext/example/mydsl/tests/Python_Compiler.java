@@ -247,7 +247,14 @@ public class Python_Compiler {
 		// execute the generated Python code
 		// roughly: exec "python foo.py"
 		
-		Process p = Runtime.getRuntime().exec("python3 "+ PYTHON_OUTPUT);
+		//Process p = Runtime.getRuntime().exec("python3 "+ PYTHON_OUTPUT);
+		
+		System.out.println(new BufferedReader(new
+				InputStreamReader(Runtime.getRuntime().exec("pwd").getInputStream())).readLine());
+		
+		Process p = System.getProperty("os.name").toLowerCase().contains("windows") ? 
+			    Runtime.getRuntime().exec(new String[]{"powershell", "docker run -v ${PWD}:/app -w /app/ dsl_py python3 ./foo.py"}) :
+			    Runtime.getRuntime().exec(new String[]{"./test_dock.sh"});
 		
 		// output
 		BufferedReader stdInput = new BufferedReader(new

@@ -96,6 +96,11 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
         return createReadJsonAdapter();
       }
       @Override
+      public Adapter casePrintJson(PrintJson object)
+      {
+        return createPrintJsonAdapter();
+      }
+      @Override
       public Adapter caseWriteJson(WriteJson object)
       {
         return createWriteJsonAdapter();
@@ -126,9 +131,29 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
         return createSortAdapter();
       }
       @Override
-      public Adapter caseJSON(JSON object)
+      public Adapter caseShow(Show object)
       {
-        return createJSONAdapter();
+        return createShowAdapter();
+      }
+      @Override
+      public Adapter caseTypeReference(TypeReference object)
+      {
+        return createTypeReferenceAdapter();
+      }
+      @Override
+      public Adapter caseTypeInt(TypeInt object)
+      {
+        return createTypeIntAdapter();
+      }
+      @Override
+      public Adapter caseTypeString(TypeString object)
+      {
+        return createTypeStringAdapter();
+      }
+      @Override
+      public Adapter caseTypeJSON(TypeJSON object)
+      {
+        return createTypeJSONAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -208,6 +233,21 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createReadJsonAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.PrintJson <em>Print Json</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl.myDsl.PrintJson
+   * @generated
+   */
+  public Adapter createPrintJsonAdapter()
   {
     return null;
   }
@@ -303,16 +343,76 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.JSON <em>JSON</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.Show <em>Show</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xtext.example.mydsl.myDsl.JSON
+   * @see org.xtext.example.mydsl.myDsl.Show
    * @generated
    */
-  public Adapter createJSONAdapter()
+  public Adapter createShowAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.TypeReference <em>Type Reference</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl.myDsl.TypeReference
+   * @generated
+   */
+  public Adapter createTypeReferenceAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.TypeInt <em>Type Int</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl.myDsl.TypeInt
+   * @generated
+   */
+  public Adapter createTypeIntAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.TypeString <em>Type String</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl.myDsl.TypeString
+   * @generated
+   */
+  public Adapter createTypeStringAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.TypeJSON <em>Type JSON</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl.myDsl.TypeJSON
+   * @generated
+   */
+  public Adapter createTypeJSONAdapter()
   {
     return null;
   }

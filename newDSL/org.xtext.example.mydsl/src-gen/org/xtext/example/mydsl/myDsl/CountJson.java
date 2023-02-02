@@ -14,7 +14,7 @@ package org.xtext.example.mydsl.myDsl;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.CountJson#getCountJSON <em>Count JSON</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.CountJson#getFile <em>File</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.CountJson#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getCountJson()
@@ -46,25 +46,25 @@ public interface CountJson extends Fun
   void setCountJSON(String value);
 
   /**
-   * Returns the value of the '<em><b>File</b></em>' containment reference.
+   * Returns the value of the '<em><b>Value</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>File</em>' containment reference.
-   * @see #setFile(JSON)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getCountJson_File()
+   * @return the value of the '<em>Value</em>' containment reference.
+   * @see #setValue(TypeString)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getCountJson_Value()
    * @model containment="true"
    * @generated
    */
-  JSON getFile();
+  TypeString getValue();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.CountJson#getFile <em>File</em>}' containment reference.
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.CountJson#getValue <em>Value</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>File</em>' containment reference.
-   * @see #getFile()
+   * @param value the new value of the '<em>Value</em>' containment reference.
+   * @see #getValue()
    * @generated
    */
-  void setFile(JSON value);
+  void setValue(TypeString value);
 
 } // CountJson
